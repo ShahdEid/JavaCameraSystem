@@ -49,6 +49,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsStaff.cs" />
+    <Compile Include="tstStaff.cs" />
     <Compile Include="tstStock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
