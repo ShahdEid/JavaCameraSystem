@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using CameraClasses;
 
 
 public partial class MyStock : System.Web.UI.Page
@@ -15,7 +16,6 @@ public partial class MyStock : System.Web.UI.Page
     
     protected void btnOK_Click(object sender, EventArgs e)
     {
-        /*
         //create an instance of clsStock
         clsStock MyStock = new clsStock();
         //capture the Stock Name
@@ -24,6 +24,5 @@ public partial class MyStock : System.Web.UI.Page
         Session["MyStock"] = MyStock;
         //redirect to the viewer page
         Response.Redirect("MyStockView.aspx");
-        */
     }
 }
