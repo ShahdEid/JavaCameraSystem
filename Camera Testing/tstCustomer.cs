@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using CameraClasses;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
 namespace Camera_Testing
@@ -8,15 +9,13 @@ namespace Camera_Testing
     {
         [TestMethod]
         public void InstanceOK()
+
         {
-            //Create an instance of class we want to create
+            //Create an instance of class we want to createsss
             clsCustomer ACustomer = new clsCustomer();
             //test to see that it exists 
             Assert.IsNotNull(ACustomer);
+       
         }
-    }
-
-    class clsCustomer
-    {
     }
 }
