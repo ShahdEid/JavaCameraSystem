@@ -80,5 +80,130 @@ namespace Camera_Testing
             //test to see that the two values are the same
             Assert.AreEqual(MyStock.StockType, TestData);
         }
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the class clsStock
+            clsStock MyStock = new clsStock();
+            //boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 StockId = 16;
+            //invoke the method
+            Found = MyStock.Find(StockId);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestStockIdFound()
+        {
+            //create an instance of the class clsStock
+            clsStock MyStock = new clsStock();
+            //boolean variable to store the results of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK(assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 StockId = 16;
+            //invoke the method
+            Found = MyStock.Find(StockId);
+            //check the stock id
+            if(MyStock.StockId != 16)
+            {
+                OK = false;
+            }
+            //test to see if the result is true
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDateAddedFound()
+        {
+            //create an instance of the class clsStock
+            clsStock MyStock = new clsStock();
+            //boolean variable to store the results of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK(assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 StockId = 16;
+            //invoke the method
+            Found = MyStock.Find(StockId);
+            //check the property
+            if (MyStock.DateAdded != Convert.ToDateTime("22/02/2022"))
+            {
+                OK = false;
+            }
+            //test to see if the result is true
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestStockNameFound()
+        {
+            //create an instance of the class clsStock
+            clsStock MyStock = new clsStock();
+            //boolean variable to store the results of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK(assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 StockId = 16;
+            //invoke the method
+            Found = MyStock.Find(StockId);
+            //check the property
+            if (MyStock.StockName != "Canon 6D Mk II")
+            {
+                OK = false;
+            }
+            //test to see if the result is true
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestStockQuantityFound()
+        {
+            //create an instance of the class clsStock
+            clsStock MyStock = new clsStock();
+            //boolean variable to store the results of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK(assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 StockId = 16;
+            //invoke the method
+            Found = MyStock.Find(StockId);
+            //check the property
+            if (MyStock.StockQuantity != 12)
+            {
+                OK = false;
+            }
+            //test to see if the result is true
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestStockTypeFound()
+        {
+            //create an instance of the class clsStock
+            clsStock MyStock = new clsStock();
+            //boolean variable to store the results of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK(assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 StockId = 16;
+            //invoke the method
+            Found = MyStock.Find(StockId);
+            //check the property
+            if (MyStock.StockType != "DSLR Camera")
+            {
+                OK = false;
+            }
+            //test to see if the result is true
+            Assert.IsTrue(OK);
+        }
     }
 }
