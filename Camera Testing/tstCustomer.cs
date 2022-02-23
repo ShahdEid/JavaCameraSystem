@@ -104,5 +104,19 @@ namespace Camera_Testing
             Assert.AreEqual(ACustomer.CustomerPaymentInfo, TestData);
 
         }
+        [TestMethod]
+        public void CustomerDOBPropertyOK()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //creare some test data to assign to the property 
+            DateTime TestData = DateTime.Now.Date;
+            //assign data to the property
+            ACustomer.CustomerDOB = TestData;
+            //test to see that it exists 
+            Assert.AreEqual(ACustomer.CustomerDOB, TestData);
+
+        }
     }
 }
