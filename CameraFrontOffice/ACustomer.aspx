@@ -18,6 +18,9 @@
             First Name<asp:TextBox ID="txtFirstName" runat="server"></asp:TextBox>
         </p>
         <p>
+            Date of Birth<asp:TextBox ID="txtDOB" runat="server"></asp:TextBox>
+        </p>
+        <p>
             Phone Number<asp:TextBox ID="txtPhoneNumber" runat="server"></asp:TextBox>
         </p>
         <p>
@@ -35,7 +38,7 @@
         <p>
             <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
             <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
-        </p>
+        &nbsp;</p>
     </form>
 </body>
 </html>
