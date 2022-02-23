@@ -1,4 +1,6 @@
-﻿namespace CameraClasses
+﻿using System;
+
+namespace CameraClasses
 {
     public class clsCustomer
     {
@@ -8,5 +10,6 @@
         public string CustomerPhoneNumber { get; set; }
         public string CustomerPostCode { get; set; }
         public string CustomerPaymentInfo { get; set; }
+        public DateTime CustomerDOB { get; set; }
     }
 }
