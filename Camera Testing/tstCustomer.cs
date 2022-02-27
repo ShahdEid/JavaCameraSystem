@@ -110,7 +110,7 @@ namespace Camera_Testing
         {
             //Create an instance of class we want to create
             clsCustomer ACustomer = new clsCustomer();
-            //creare some test data to assign to the property 
+            //create some test data to assign to the property 
             DateTime TestData = DateTime.Now.Date;
             //assign data to the property
             ACustomer.CustomerDOB = TestData;
@@ -118,5 +118,46 @@ namespace Camera_Testing
             Assert.AreEqual(ACustomer.CustomerDOB, TestData);
 
         }
+        [TestMethod]
+        public void FindMethodOK()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 CustomerID = 21;
+            //invoke the method
+            Found = ACustomer.Find(CustomerID);
+            //test to see that it exists 
+            Assert.IsTrue(Found);
+
+        }
+
+        [TestMethod]
+        public void TestCustomerIDFound()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //boolean variable to store the results of the validation
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 CustomerID = 21;
+            //invoke method
+            Found = ACustomer.Find(CustomerID);
+            //check the id
+            if (ACustomer.CustomerID !=21)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+
+        }
+
     }
 }
