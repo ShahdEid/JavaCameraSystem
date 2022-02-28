@@ -6,7 +6,7 @@ namespace Camera_Testing
 {
     [TestClass]
     public class tstCustomer
-    {
+    {                                                                           //Properties
         [TestMethod]
         public void InstanceOK()
 
