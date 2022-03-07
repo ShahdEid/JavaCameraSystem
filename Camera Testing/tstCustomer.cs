@@ -128,7 +128,7 @@ namespace Camera_Testing
             //boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 CustomerID = 1;
+            Int32 CustomerID = 4;               //1
             //invoke the method
             Found = ACustomer.Find(CustomerID);
             //test to see that it exists 
@@ -147,11 +147,11 @@ namespace Camera_Testing
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerID = 21;
+            Int32 CustomerID = 4;
             //invoke method
             Found = ACustomer.Find(CustomerID);
             //check the id
-            if (ACustomer.CustomerID !=21)
+            if (ACustomer.CustomerID !=4)
             {
                 OK = false;
             }
@@ -171,7 +171,7 @@ namespace Camera_Testing
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerID = 21;
+            Int32 CustomerID = 4;
             //invoke method
             Found = ACustomer.Find(CustomerID);
             //check the property
@@ -196,7 +196,7 @@ namespace Camera_Testing
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerID = 21;
+            Int32 CustomerID = 4;
             //invoke method
             Found = ACustomer.Find(CustomerID);
             //check the property
@@ -220,7 +220,7 @@ namespace Camera_Testing
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerID = 21;
+            Int32 CustomerID = 4;
             //invoke method
             Found = ACustomer.Find(CustomerID);
             //check the property
@@ -234,7 +234,7 @@ namespace Camera_Testing
         }
 
         [TestMethod]
-        public void TestCustomerPhoneNoFound()
+        public void TestCustomerPhoneNumberFound()
 
         {
             //Create an instance of class we want to create
@@ -244,7 +244,7 @@ namespace Camera_Testing
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerID = 21;
+            Int32 CustomerID = 4;
             //invoke method
             Found = ACustomer.Find(CustomerID);
             //check the property
@@ -268,7 +268,7 @@ namespace Camera_Testing
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerID = 21;
+            Int32 CustomerID = 4;
             //invoke method
             Found = ACustomer.Find(CustomerID);
             //check the property
@@ -291,7 +291,7 @@ namespace Camera_Testing
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerID = 21;
+            Int32 CustomerID = 4;
             //invoke the method
             Found = ACustomer.Find(CustomerID);
             //check the property
