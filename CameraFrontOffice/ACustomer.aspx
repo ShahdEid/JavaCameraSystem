@@ -10,6 +10,7 @@
     <form id="form1" runat="server">
         <div>
             ID<asp:TextBox ID="txtID" runat="server"></asp:TextBox>
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
         </div>
         <p>
             Last Name<asp:TextBox ID="txtLastName" runat="server"></asp:TextBox>
@@ -37,7 +38,7 @@
         </p>
         <p>
             <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
-            <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+            &nbsp;<asp:Button ID="btnCancel" runat="server" Text="Cancel" />
         &nbsp;</p>
     </form>
 </body>
