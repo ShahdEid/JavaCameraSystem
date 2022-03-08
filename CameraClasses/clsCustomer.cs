@@ -158,5 +158,19 @@ namespace CameraClasses
                 return false;
             }
         }
+
+        public string Valid(string customerDOB, string customerFName, string customerLName, string customerPhoneNumber, string customerPostCode, string customerPaymentInfo)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //if the customerpostcode is blank
+            if (customerPostCode.Length ==0)
+            {
+                //record the error
+                Error = Error + "Post Code Cannot be blank : ";
+            }
+            //return any error messages
+            return Error;
+        }
     }
 }

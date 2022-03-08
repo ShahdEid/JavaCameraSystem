@@ -7,6 +7,15 @@ namespace Camera_Testing
     [TestClass]
     public class tstCustomer
     {                                                                           //Properties
+        //good test data
+        //create some test data to pass to the method
+        string CustomerFName = "Shahd";
+        string CustomerLName = "Diab";
+        string CustomerDOB = DateTime.Now.Date.ToString();
+        string CustomerPostCode = "LE1A 6PSR";
+        string CustomerPhoneNumber = "07547809434";
+        string CustomerPaymentInfo= "Debit";
+
         [TestMethod]
         public void InstanceOK()
 
@@ -303,5 +312,89 @@ namespace Camera_Testing
             Assert.IsTrue(OK);
         }
 
+                                                                                            //Validation
+        [TestMethod]
+        public void ValidMethodOK()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB,CustomerFName,CustomerLName,CustomerPhoneNumber,CustomerPostCode,CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerPostCodeMinLessOne()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string CustomerPostCode = "";  //this should trigger an error
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerPostCodeMin()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string CustomerPostCode = "L";  //this should be OK
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+
+        //[TestMethod]
+        //public void CustomerPostCodeMinPlusOne()
+
+        //{
+        //    //Create an instance of class we want to create
+        //    clsCustomer ACustomer = new clsCustomer();
+        //    //string variable to store any error message
+        //    String Error = "";
+        //    //create some test data to pass the method
+        //    string CustomerPostCode = "LE";  //this should be OK
+        //    //invoke the method
+        //    Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+        //    //test to see that that the result is correct
+        //    Assert.AreEqual(Error, "");
+
+        //}
+
+        [TestMethod]
+        public void CustomerPostCodeMaxLessOne()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string CustomerPostCode = "LE1A 3FR";  //this should be OK
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
     }
 }
