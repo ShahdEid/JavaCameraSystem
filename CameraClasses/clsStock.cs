@@ -107,4 +107,6 @@ namespace CameraClasses
             return true;
         }
     }
+
+   
 }
