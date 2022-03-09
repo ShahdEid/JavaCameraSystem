@@ -363,22 +363,22 @@ namespace Camera_Testing
         }
 
 
-        //[TestMethod]
-        //public void CustomerPostCodeMinPlusOne()
+        [TestMethod]
+        public void CustomerPostCodeMinPlusOne()
 
-        //{
-        //    //Create an instance of class we want to create
-        //    clsCustomer ACustomer = new clsCustomer();
-        //    //string variable to store any error message
-        //    String Error = "";
-        //    //create some test data to pass the method
-        //    string CustomerPostCode = "LE";  //this should be OK
-        //    //invoke the method
-        //    Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
-        //    //test to see that that the result is correct
-        //    Assert.AreEqual(Error, "");
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string CustomerPostCode = "LE";  //this should be OK
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreEqual(Error, "");
 
-        //}
+        }
 
         [TestMethod]
         public void CustomerPostCodeMaxLessOne()
@@ -389,12 +389,91 @@ namespace Camera_Testing
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string CustomerPostCode = "LE1A 3FR";  //this should be OK
+            string CustomerPostCode = "LE1 3FR";  //this should be OK
             //invoke the method
             Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
             //test to see that that the result is correct
             Assert.AreEqual(Error, "");
 
+
+
         }
+
+        [TestMethod]
+        public void CustomerPostCodeMax()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string CustomerPostCode = "LE1A 3FR2";  //this should be OK
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreEqual(Error, "");
+
+
+
+        }
+
+        [TestMethod]
+        public void CustomerPostCodeMid()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string CustomerPostCode = "LE1A";  //this should be OK
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreEqual(Error, "");
+
+
+
+        }
+        [TestMethod]
+        public void CustomerPostCodeMaxPlusOne()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string CustomerPostCode = "LE1A 3FR2S";  //this should FAIL
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+            [TestMethod]
+            public void CustomerPostCodeExtremeMax()
+
+            {
+                //Create an instance of class we want to create
+                clsCustomer ACustomer = new clsCustomer();
+                //string variable to store any error message
+                String Error = "";
+                //create some test data to pass the method
+                string CustomerPostCode = "LE1A";
+                CustomerPostCode = CustomerPostCode.PadRight(500, 'L'); //this should be fail
+                //invoke the method
+                Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+                //test to see that that the result is correct
+                Assert.AreNotEqual(Error, "");
+
+
+
+            }
+
+
+        }
+
     }
-}
+
