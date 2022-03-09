@@ -169,6 +169,12 @@ namespace CameraClasses
                 //record the error
                 Error = Error + "Post Code Cannot be blank : ";
             }
+            //if customer post code is greater than 9 characters
+            if (customerPostCode.Length > 9)
+            {
+                //error
+                Error = Error + "Post Code must be less than 9 characters : ";
+            }
             //return any error messages
             return Error;
         }
