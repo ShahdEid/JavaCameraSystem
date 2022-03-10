@@ -95,16 +95,32 @@ namespace CameraClasses
             }
         }
 
-        public bool Find(int stockId)
+        public bool Find(int StockId)
         {
-            //set the private data members to the test data value
-            mStockId = 16;
-            mDateAdded = Convert.ToDateTime("22/02/2022");
-            mStockName = "Canon 6D Mk II";
-            mStockQuantity = 12;
-            mStockType = "DSLR Camera";
-            //always return true
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the stock id to search for
+            DB.AddParameter("@StockId", StockId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_FilterByStockId");
+            //if one record is found (there should be either one or zero)
+            if(DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mStockId = Convert.ToInt32(DB.DataTable.Rows[0]["StockId"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
+                mStockName = Convert.ToString(DB.DataTable.Rows[0]["StockName"]);
+                mStockQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["StockQuantity"]);
+                mStockType = Convert.ToString(DB.DataTable.Rows[0]["StockType"]);
+                //return that everything worked OK
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false indicating problem
+                return false;
+            }
         }
     }
 

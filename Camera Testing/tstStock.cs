@@ -89,7 +89,7 @@ namespace Camera_Testing
             //boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 StockId = 16;
+            Int32 StockId = 2;
             //invoke the method
             Found = MyStock.Find(StockId);
             //test to see if the result is true
@@ -106,11 +106,11 @@ namespace Camera_Testing
             //boolean variable to record if data is OK(assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StockId = 16;
+            Int32 StockId = 2;
             //invoke the method
             Found = MyStock.Find(StockId);
             //check the stock id
-            if(MyStock.StockId != 16)
+            if(MyStock.StockId != 2)
             {
                 OK = false;
             }
@@ -128,11 +128,11 @@ namespace Camera_Testing
             //boolean variable to record if data is OK(assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StockId = 16;
+            Int32 StockId = 2;
             //invoke the method
             Found = MyStock.Find(StockId);
             //check the property
-            if (MyStock.DateAdded != Convert.ToDateTime("22/02/2022"))
+            if (MyStock.DateAdded != Convert.ToDateTime("03/02/2022"))
             {
                 OK = false;
             }
@@ -150,11 +150,11 @@ namespace Camera_Testing
             //boolean variable to record if data is OK(assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StockId = 16;
+            Int32 StockId = 1;
             //invoke the method
             Found = MyStock.Find(StockId);
             //check the property
-            if (MyStock.StockName != "Canon 6D Mk II")
+            if (MyStock.StockName != "Canon EOS R")
             {
                 OK = false;
             }
@@ -172,11 +172,11 @@ namespace Camera_Testing
             //boolean variable to record if data is OK(assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StockId = 16;
+            Int32 StockId = 3;
             //invoke the method
             Found = MyStock.Find(StockId);
             //check the property
-            if (MyStock.StockQuantity != 12)
+            if (MyStock.StockQuantity != 3)
             {
                 OK = false;
             }
@@ -194,11 +194,11 @@ namespace Camera_Testing
             //boolean variable to record if data is OK(assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StockId = 16;
+            Int32 StockId = 3;
             //invoke the method
             Found = MyStock.Find(StockId);
             //check the property
-            if (MyStock.StockType != "DSLR Camera")
+            if (MyStock.StockType != "Lens")
             {
                 OK = false;
             }
