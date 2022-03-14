@@ -235,7 +235,37 @@ namespace CameraClasses
                 Error = Error + "Last Name cannot be more than 50 letters";
             }
 
-         
+            //Payment info is blank 
+            if (customerPaymentInfo.Length == 0)
+            {
+                // error
+                Error = Error + "Payment Information cannot be blank";
+            }
+            //Payment info too long 
+            if (customerPaymentInfo.Length > 50)
+            {
+                // error
+                Error = Error + "Last Name cannot be more than 50 letters";
+            }
+            
+            //if phone number left blank 
+            if (customerPhoneNumber.Length == 0)
+            {
+                //error
+                Error = Error + "Please enter your Phone number";
+
+            }
+
+            //if phone no is more than 10 characters
+            if (customerPhoneNumber.Length >10)
+            {
+                //error
+                Error = Error + "Phone number cannot be more than 10 characters";
+
+            }
+
+
+
 
 
             //return any error messages
