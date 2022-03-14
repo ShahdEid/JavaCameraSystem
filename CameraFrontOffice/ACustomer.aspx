@@ -35,6 +35,7 @@
                 <asp:ListItem>Mastercard</asp:ListItem>
                 <asp:ListItem>American Express</asp:ListItem>
             </asp:DropDownList>
+            <asp:Label ID="lblError" runat="server"></asp:Label>
         </p>
         <p>
             <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
