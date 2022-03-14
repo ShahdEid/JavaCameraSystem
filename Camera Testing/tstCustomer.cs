@@ -11,10 +11,10 @@ namespace Camera_Testing
         //create some test data to pass to the method
         string CustomerFName = "Shahd";
         string CustomerLName = "Diab";
-        string CustomerDOB = DateTime.Now.Date.ToString();
+        string CustomerDOB = "10/03/2003";
         string CustomerPostCode = "LE1A 6PSR";
         string CustomerPhoneNumber = "07547809434";
-        string CustomerPaymentInfo= "Debit";
+        string CustomerPaymentInfo = "Debit";
 
         [TestMethod]
         public void InstanceOK()
@@ -24,9 +24,9 @@ namespace Camera_Testing
             clsCustomer ACustomer = new clsCustomer();
             //test to see that it exists 
             Assert.IsNotNull(ACustomer);
-       
+
         }
-        [TestMethod]                                                             
+        [TestMethod]
         public void CustomerIDPropertyOK()
 
         {
@@ -41,7 +41,7 @@ namespace Camera_Testing
 
         }
 
-        [TestMethod]                                                              
+        [TestMethod]
         public void CustomerLNamePropertyOK()
 
         {
@@ -127,7 +127,7 @@ namespace Camera_Testing
             Assert.AreEqual(ACustomer.CustomerDOB, TestData);
 
         }
-                                                            //Find Method
+        //Find Method
         [TestMethod]
         public void FindMethodOK()
 
@@ -160,7 +160,7 @@ namespace Camera_Testing
             //invoke method
             Found = ACustomer.Find(CustomerID);
             //check the id
-            if (ACustomer.CustomerID !=4)
+            if (ACustomer.CustomerID != 4)
             {
                 OK = false;
             }
@@ -312,7 +312,7 @@ namespace Camera_Testing
             Assert.IsTrue(OK);
         }
 
-                                                                                            //Validation
+        //Validation
         [TestMethod]
         public void ValidMethodOK()
 
@@ -322,7 +322,7 @@ namespace Camera_Testing
             //string variable to store any error message
             String Error = "";
             //invoke the method
-            Error = ACustomer.Valid(CustomerDOB,CustomerFName,CustomerLName,CustomerPhoneNumber,CustomerPostCode,CustomerPaymentInfo);
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
             //test to see that that the result is correct
             Assert.AreEqual(Error, "");
 
@@ -389,7 +389,7 @@ namespace Camera_Testing
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string CustomerPostCode = "LE1 3FR";  //this should be OK
+            string CustomerPostCode = "LLLLLLLL";  //this should be OK
             //invoke the method
             Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
             //test to see that that the result is correct
@@ -408,7 +408,7 @@ namespace Camera_Testing
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string CustomerPostCode = "LE1A 3FR2";  //this should be OK
+            string CustomerPostCode = "LLLLLLLLL";  //this should be OK
             //invoke the method
             Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
             //test to see that that the result is correct
@@ -427,7 +427,7 @@ namespace Camera_Testing
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string CustomerPostCode = "LE1A";  //this should be OK
+            string CustomerPostCode = "LLLL";  //this should be OK
             //invoke the method
             Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
             //test to see that that the result is correct
@@ -445,35 +445,340 @@ namespace Camera_Testing
             //string variable to store any error message
             String Error = "";
             //create some test data to pass the method
-            string CustomerPostCode = "LE1A 3FR2S";  //this should FAIL
+            string CustomerPostCode = "LLLLLLLLLL";  //this should FAIL
             //invoke the method
             Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
             //test to see that that the result is correct
             Assert.AreNotEqual(Error, "");
         }
 
-            [TestMethod]
-            public void CustomerPostCodeExtremeMax()
+        [TestMethod]
+        public void CustomerPostCodeExtremeMax()
 
-            {
-                //Create an instance of class we want to create
-                clsCustomer ACustomer = new clsCustomer();
-                //string variable to store any error message
-                String Error = "";
-                //create some test data to pass the method
-                string CustomerPostCode = "LE1A";
-                CustomerPostCode = CustomerPostCode.PadRight(500, 'L'); //this should be fail
-                //invoke the method
-                Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
-                //test to see that that the result is correct
-                Assert.AreNotEqual(Error, "");
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string CustomerPostCode = "LE1A";
+            CustomerPostCode = CustomerPostCode.PadRight(500, 'L'); //this should be fail
+                                                                    //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreNotEqual(Error, "");
 
-
-
-            }
 
 
         }
 
+
+        [TestMethod]
+        public void CustomerDOBExtremeMin()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test data 
+            DateTime TestDate;
+            //set the date to today
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is 200 years ago 
+            TestDate = TestDate.AddYears(-200);
+            //convert the date  variable to a string variable
+            string CustomerDOB = TestDate.ToString();
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+
+        }
+
+        [TestMethod]
+        public void CustomerDOBMinLessOne()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test data 
+            DateTime TestDate;
+            //set the date to today
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is 99 years ago 
+            TestDate = TestDate.AddYears(-99);
+            //convert the date  variable to a string variable
+            string CustomerDOB = TestDate.ToString();
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerDOBMin()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test data 
+            DateTime TestDate;
+            //set the date to today
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is 100 years ago 
+            TestDate = TestDate.AddYears(-100);
+            //convert the date  variable to a string variable
+            string CustomerDOB = TestDate.ToString();
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerDOBMinPlusOne()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test data 
+            DateTime TestDate;
+            //set the date to today
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is 99 years ago 
+            TestDate = TestDate.AddYears(-101);
+            //convert the date  variable to a string variable
+            string CustomerDOB = TestDate.ToString();
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerDOBMaxLessOne()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test data 
+            DateTime TestDate;
+            //set the date to today
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is14 years ago 
+            TestDate = TestDate.AddYears(-13);
+            //convert the date  variable to a string variable
+            string CustomerDOB = TestDate.ToString();
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+
+        [TestMethod]
+        public void CustomerDOBMaxPlusOne()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test data 
+            DateTime TestDate;
+            //set the date to today
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is 16 years ago 
+            TestDate = TestDate.AddYears(-16);
+            //convert the date  variable to a string variable
+            string CustomerDOB = TestDate.ToString();
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerDOBMax()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test data 
+            DateTime TestDate;
+            //set the date to today
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is 15 years ago 
+            TestDate = TestDate.AddYears(-15);
+            //convert the date  variable to a string variable
+            string CustomerDOB = TestDate.ToString();
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerDOBInvalidData()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //set the dob to a non date value
+            string CustomerDOB = "Invalid data! Please insert a date";
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerFNameMinLessOne()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //set the dob to a non date value
+            string CustomerFName = "";
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerFNameMin()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //set the dob to a non date value
+            string CustomerFName = "S";
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerFNameMinPlusOne()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //set the dob to a non date value
+            string CustomerFName = "SS";
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerFNameMaxLessOne()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //set the dob to a non date value
+            string CustomerFName = "";
+            CustomerFName = CustomerFName.PadRight(49, 'S');
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+
+        [TestMethod]
+        public void CustomerFNameMax()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //set the FName to a non date value
+            string CustomerFName = "";
+            CustomerFName = CustomerFName.PadRight(50, 'S');
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+
+        [TestMethod]
+        public void CustomerFNameMaxPlusOne()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string CustomerFName = "";
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+
+        [TestMethod]
+        public void CustomerFNameMid()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //set the dob to a non date value
+            string CustomerFName = "";
+            CustomerFName = CustomerFName.PadRight(25, 'S');
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
     }
+
+}
 
