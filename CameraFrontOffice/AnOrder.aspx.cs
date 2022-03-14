@@ -32,7 +32,7 @@ public partial class AnOrder : System.Web.UI.Page
         //store the order id in the session object
         Session["AnOrder"] = AnOrder;
         //redirect to the viewer page
-        Response.Redirect("OrderViewer.apx");
+        Response.Redirect("OrderViewer.aspx");
 
     }
 
