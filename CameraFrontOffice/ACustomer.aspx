@@ -9,26 +9,26 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            ID<asp:TextBox ID="txtID" runat="server"></asp:TextBox>
+            ID&nbsp; <asp:TextBox ID="txtID" runat="server"></asp:TextBox>
             <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
         </div>
         <p>
-            Last Name<asp:TextBox ID="txtLastName" runat="server"></asp:TextBox>
+            Last Name&nbsp;&nbsp; <asp:TextBox ID="txtLastName" runat="server"></asp:TextBox>
         </p>
         <p>
-            First Name<asp:TextBox ID="txtFirstName" runat="server"></asp:TextBox>
+            First Name&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtFirstName" runat="server"></asp:TextBox>
         </p>
         <p>
-            Date of Birth<asp:TextBox ID="txtDOB" runat="server"></asp:TextBox>
+            Date of Birth&nbsp; <asp:TextBox ID="txtDOB" runat="server"></asp:TextBox>
         </p>
         <p>
-            Phone Number<asp:TextBox ID="txtPhoneNumber" runat="server"></asp:TextBox>
+            Phone Number&nbsp; +44 <asp:TextBox ID="txtPhoneNumber" runat="server"></asp:TextBox>
         </p>
         <p>
-            Post Code<asp:TextBox ID="txtPostCode" runat="server"></asp:TextBox>
+            Post Code&nbsp;&nbsp; <asp:TextBox ID="txtPostCode" runat="server"></asp:TextBox>
         </p>
         <p>
-            Payment Type<asp:DropDownList ID="DropDownPayment" runat="server">
+            Payment Type&nbsp; <asp:DropDownList ID="DropDownPayment" runat="server">
                 <asp:ListItem>Credit Card</asp:ListItem>
                 <asp:ListItem>Debit Card</asp:ListItem>
                 <asp:ListItem>Visa</asp:ListItem>

@@ -671,7 +671,7 @@ namespace Camera_Testing
         }
 
         [TestMethod]
-        public void CustomerFNameMin()
+        public void CustomerLNameMinLessOne()
 
         {
             //Create an instance of class we want to create
@@ -679,6 +679,41 @@ namespace Camera_Testing
             //string variable to store any error message
             String Error = "";
             //set the dob to a non date value
+            string CustomerLName = "";
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+
+        [TestMethod]
+        public void CustomerLNameMin()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //set to a non date value
+            string CustomerLName = "E";
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerFNameMin()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //set to a non date value
             string CustomerFName = "S";
             //invoke the method
             Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
@@ -688,6 +723,24 @@ namespace Camera_Testing
         }
 
         [TestMethod]
+        public void CustomerLNameMinPlusOne()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //set to a non date value
+            string CustomerLName = "EE";
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+
+        [TestMethod]
         public void CustomerFNameMinPlusOne()
 
         {
@@ -695,8 +748,28 @@ namespace Camera_Testing
             clsCustomer ACustomer = new clsCustomer();
             //string variable to store any error message
             String Error = "";
-            //set the dob to a non date value
+            //set to a non date value
             string CustomerFName = "SS";
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+
+
+        [TestMethod]
+        public void CustomerLNameMaxLessOne()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //set b to a non date value
+            string CustomerLName = "";
+            CustomerLName = CustomerLName.PadRight(49, 'E');
             //invoke the method
             Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
             //test to see that that the result is correct
@@ -712,9 +785,27 @@ namespace Camera_Testing
             clsCustomer ACustomer = new clsCustomer();
             //string variable to store any error message
             String Error = "";
-            //set the dob to a non date value
+            //set b to a non date value
             string CustomerFName = "";
             CustomerFName = CustomerFName.PadRight(49, 'S');
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerLNameMax()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //set the FName to a non date value
+            string CustomerLName = "";
+            CustomerLName = CustomerLName.PadRight(50, 'E');
             //invoke the method
             Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
             //test to see that that the result is correct
@@ -741,6 +832,23 @@ namespace Camera_Testing
 
         }
 
+        [TestMethod]
+        public void CustomerLNameMaxPlusOne()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string CustomerLName = "";
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
 
         [TestMethod]
         public void CustomerFNameMaxPlusOne()
@@ -756,6 +864,25 @@ namespace Camera_Testing
             Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
             //test to see that that the result is correct
             Assert.AreNotEqual(Error, "");
+
+        }
+
+
+        [TestMethod]
+        public void CustomerLNameMid()
+
+        {
+            //Create an instance of class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //set the dob to a non date value
+            string CustomerLName = "";
+            CustomerLName = CustomerLName.PadRight(25, 'S');
+            //invoke the method
+            Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
+            //test to see that that the result is correct
+            Assert.AreEqual(Error, "");
 
         }
 
@@ -778,7 +905,12 @@ namespace Camera_Testing
 
         }
 
+
+
+
+
     }
 
 }
+
 

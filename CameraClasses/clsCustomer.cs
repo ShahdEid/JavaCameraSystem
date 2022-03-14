@@ -209,7 +209,6 @@ namespace CameraClasses
             //}
 
 
-
             //Fname is blank 
             if (customerFName.Length == 0)
             {
@@ -223,8 +222,20 @@ namespace CameraClasses
                 Error = Error + "First Name cannot be more than 50 letters";
             }
 
+            //Lname is blank 
+            if (customerLName.Length == 0)
+            {
+                // error
+                Error = Error + "Last Name cannot be blank";
+            }
+            //L name is too long 
+            if (customerLName.Length > 50)
+            {
+                // error
+                Error = Error + "Last Name cannot be more than 50 letters";
+            }
 
-
+         
 
 
             //return any error messages
