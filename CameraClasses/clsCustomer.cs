@@ -24,15 +24,15 @@ namespace CameraClasses
         //private data member for CustomerLName
         private string mCustomerLName;
         //public property for CustomerLName
-        public string CustomerLName 
+        public string CustomerLName
         {
-			get
-			{
+            get
+            {
                 //return private data
                 return mCustomerLName;
             }
-			set
-			{
+            set
+            {
                 //set the private data
                 mCustomerLName = value;
             }
@@ -124,9 +124,9 @@ namespace CameraClasses
             }
         }
 
-		
 
-		public bool Find(int CustomerID)
+
+        public bool Find(int CustomerID)
         {
             //create an instance of the data connection
             clsDataConnection DB = new clsDataConnection();
@@ -163,8 +163,10 @@ namespace CameraClasses
         {
             //create a string variable to store the error
             String Error = "";
+            //create a temporary variable to store date values
+            DateTime DateTemp;
             //if the customerpostcode is blank
-            if (customerPostCode.Length ==0)
+            if (customerPostCode.Length == 0)
             {
                 //record the error
                 Error = Error + "Post Code Cannot be blank : ";
@@ -175,6 +177,56 @@ namespace CameraClasses
                 //error
                 Error = Error + "Post Code must be less than 9 characters : ";
             }
+            try
+            {
+
+
+                //copy the DOB value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(customerDOB);
+                if (DateTemp < DateTime.Now.Date.AddYears(-100))
+                {
+
+                    //record the error
+                    Error = Error + "Too old to create add  : ";
+                }
+                //check to see if the date is greater than 
+                if (DateTemp > DateTime.Now.Date.AddYears(-14))
+                {
+                    //record error
+                    Error = Error + "Age is too young : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid : ";
+            }
+
+            //if (DateTemp >= DateTime.Now.Date.AddYears(15))
+            //{
+            //    //record error
+            //    Error = Error + "The entered DOB is invalid date";
+            //}
+
+
+
+            //Fname is blank 
+            if (customerFName.Length == 0)
+            {
+                // error
+                Error = Error + "First Name cannot be blank";
+            }
+            //F name is too long 
+            if (customerFName.Length > 50)
+            {
+                // error
+                Error = Error + "First Name cannot be more than 50 letters";
+            }
+
+
+
+
+
             //return any error messages
             return Error;
         }
