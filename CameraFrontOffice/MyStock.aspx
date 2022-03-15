@@ -8,63 +8,64 @@
     <style type="text/css">
         .auto-style1 {
             position: absolute;
-            top: 37px;
+            top: 51px;
             left: 10px;
         }
         .auto-style2 {
             position: absolute;
-            top: 71px;
-            left: 8px;
+            top: 190px;
+            left: 10px;
             z-index: 1;
         }
         .auto-style3 {
             position: absolute;
-            top: 107px;
-            left: 9px;
+            top: 97px;
+            left: 10px;
             z-index: 1;
-            right: 1102px;
+            right: 1011px;
+            height: 22px;
         }
         .auto-style4 {
             position: absolute;
-            top: 143px;
-            left: 11px;
+            top: 231px;
+            left: 10px;
             z-index: 1;
         }
         .auto-style5 {
             position: absolute;
-            top: 38px;
+            top: 51px;
             left: 166px;
             z-index: 1;
         }
         .auto-style6 {
             position: absolute;
-            top: 144px;
-            left: 167px;
+            top: 231px;
+            left: 168px;
             z-index: 1;
         }
         .auto-style7 {
             position: absolute;
-            top: 107px;
-            left: 166px;
+            top: 96px;
+            left: 167px;
             z-index: 1;
         }
         .auto-style8 {
             position: absolute;
-            top: 70px;
-            left: 166px;
+            top: 190px;
+            left: 167px;
             z-index: 1;
         }
         .auto-style9 {
             position: absolute;
-            top: 237px;
-            left: 183px;
+            top: 301px;
+            left: 180px;
             z-index: 1;
-            right: 965px;
+            right: 758px;
         }
         .auto-style10 {
             position: absolute;
-            top: 237px;
-            left: 67px;
+            top: 302px;
+            left: 64px;
             z-index: 1;
             height: 29px;
         }
@@ -73,6 +74,8 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:Label ID="lblStockId" runat="server" style="z-index: 1; left: 10px; top: 15px; position: absolute" Text="Stock Id"></asp:Label>
+            <asp:TextBox ID="txtStockId" runat="server" style="z-index: 1; left: 167px; top: 11px; position: absolute"></asp:TextBox>
         </div>
         <asp:Label ID="lblStockName" runat="server" CssClass="auto-style1" style="z-index: 1" Text="Stock Name"></asp:Label>
         <asp:Label ID="lblStockQuantity" runat="server" CssClass="auto-style2" Text="Stock Quantity"></asp:Label>
@@ -83,7 +86,11 @@
         <asp:TextBox ID="txtStockType" runat="server" CssClass="auto-style7"></asp:TextBox>
         <asp:TextBox ID="txtDateAdded" runat="server" CssClass="auto-style6"></asp:TextBox>
         <asp:Button ID="btnOK" runat="server" CssClass="auto-style10" OnClick="btnOK_Click" Text="OK" />
-        <asp:Button ID="btnClose" runat="server" CssClass="auto-style9" Text="Close" />
+        <asp:Button ID="btnClose" runat="server" CssClass="auto-style9" Text="Close" Width="100px" />
+        <asp:TextBox ID="txtStockPrice" runat="server" style="z-index: 1; left: 168px; top: 141px; position: absolute"></asp:TextBox>
+        <asp:Label ID="lblStockPrice" runat="server" style="z-index: 1; left: 12px; top: 144px; position: absolute" Text="Stock Price"></asp:Label>
+        <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 372px; top: 10px; position: absolute" Text="Find" />
+        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 12px; top: 262px; position: absolute"></asp:Label>
     </form>
 </body>
 </html>

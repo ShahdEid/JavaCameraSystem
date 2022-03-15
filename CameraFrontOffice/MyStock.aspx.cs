@@ -25,4 +25,27 @@ public partial class MyStock : System.Web.UI.Page
         //redirect to the viewer page
         Response.Redirect("MyStockView.aspx");
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        //create an instance of the stock class
+        clsStock MyStock = new clsStock();
+        //variable to store the primary key
+        Int32 StockId;
+        //variable to store the result of the find operation
+        Boolean Found = false;
+        //get the primary key entered by the user
+        StockId = Convert.ToInt32(txtStockId.Text);
+        //find the record
+        Found = MyStock.Find(StockId);
+        //if found
+        if (Found == true)
+        {
+            //display the values of the properties in the form
+            txtStockName.Text = MyStock.StockName;
+            txtStockType.Text = MyStock.StockType;
+            txtStockQuantity.Text = MyStock.StockQuantity.ToString();
+            txtDateAdded.Text = MyStock.DateAdded.ToString();
+        }
+    }
 }
