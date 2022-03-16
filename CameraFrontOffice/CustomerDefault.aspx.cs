@@ -31,4 +31,19 @@ public partial class CustomerDefault : System.Web.UI.Page
         lstCustomers.DataBind();
 
     }
+
+    protected void lstCustomers_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+
+ 
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        //store -1 into the session object to indicate this is a new record
+        Session["CustomerID"] = -1;
+        //redirect tpo the entry page
+        Response.Redirect("ACustomer.aspx");
+    }
 }

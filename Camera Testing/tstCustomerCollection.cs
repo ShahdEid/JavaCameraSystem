@@ -118,7 +118,71 @@ namespace Camera_Testing
         //    Assert.AreEqual(AllCustomers.Count, 2);
         //}
 
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //create instance of the class we want to create
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create some test data to assign to the property
+            clsCustomer TestItem = new clsCustomer();
+            //var to store the pk
+            Int32 PrimaryKey = 0;
+            //set properties
+            TestItem.CustomerID = 1;
+            TestItem.CustomerFName = "First name";
+            TestItem.CustomerLName = "LastName";
+            TestItem.CustomerDOB = DateTime.Now.Date;
+            TestItem.CustomerPostCode = "LE1 1WE";
+            TestItem.CustomerPaymentInfo = "Credit";
+            TestItem.CustomerPhoneNumber = "1234567891";
+            //set thiscustomer to the test data 
+            AllCustomers.ThisCustomer = TestItem;
+            //add record 
+            PrimaryKey = AllCustomers.Add();
+            //set pk of the test data 
+            TestItem.CustomerID = PrimaryKey;
+            //find the record 
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //test to see that the 2 values are the same
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
 
+        }
+
+
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create instance of the class we want to create
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create some test data to assign to the property
+            clsCustomer TestItem = new clsCustomer();
+            //var to store the pk
+            Int32 PrimaryKey = 0;
+            //set properties
+            TestItem.CustomerID = 1;
+            TestItem.CustomerFName = "First name";
+            TestItem.CustomerLName = "LastName";
+            TestItem.CustomerDOB = DateTime.Now.Date;
+            TestItem.CustomerPostCode = "LE1 1WE";
+            TestItem.CustomerPaymentInfo = "Credit";
+            TestItem.CustomerPhoneNumber = "1234567891";
+            //set thiscustomer to the test data 
+            AllCustomers.ThisCustomer = TestItem;
+            //add record 
+            PrimaryKey = AllCustomers.Add();
+            //set pk of the test data 
+            TestItem.CustomerID = PrimaryKey;
+            //find the record 
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //delete record
+            //AllCustomers.Delete();                              //HERE
+            //now find the record
+            Boolean Found = AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
+
+        }
 
     }
 }
