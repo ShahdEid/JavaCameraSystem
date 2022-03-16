@@ -78,6 +78,23 @@ namespace CameraClasses
             }
         }
 
+        //StockPrice private member variable
+        private decimal mStockPrice;
+        //StockPrice public property
+        public decimal StockPrice
+        {
+            get
+            {
+                //this line of code sends data out of the property
+                return mStockPrice;
+            }
+            set
+            {
+                //this line of code allows data into the property
+                mStockPrice = value;
+            }
+        }
+
         //StockType private member variable
         private string mStockType;
         //StockType public property
@@ -111,6 +128,7 @@ namespace CameraClasses
                 mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
                 mStockName = Convert.ToString(DB.DataTable.Rows[0]["StockName"]);
                 mStockQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["StockQuantity"]);
+                mStockPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["StockPrice"]);
                 mStockType = Convert.ToString(DB.DataTable.Rows[0]["StockType"]);
                 //return that everything worked OK
                 return true;
@@ -121,6 +139,62 @@ namespace CameraClasses
                 //return false indicating problem
                 return false;
             }
+        }
+
+        public string Valid(string stockName, string stockType, string stockPrice, string stockQuantity, string dateAdded)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //create a temporary variable to store date values
+            DateTime DateTemp;
+            //if the StockName is blank
+            if(stockName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The stock name may not be blank : ";
+            }
+            //if the StockName is greater than 50 characters
+            if(stockName.Length > 50)
+            {
+                //record the error
+                Error = Error + "The stock name must be less than 50 characters : ";
+            }
+            //if the StockType is blank
+            if (stockType.Length == 0)
+            {
+                //record the error
+                Error = Error + "The stock type may not be blank : ";
+            }
+            //if the StockType is greater than 30 characters
+            if (stockType.Length > 30)
+            {
+                //record the error
+                Error = Error + "The stock type must be less than 50 characters : ";
+            }
+            try
+            {
+                //copy the dateAdded value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(dateAdded);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+            
+            //return any error messages
+            return Error;
         }
     }
 
