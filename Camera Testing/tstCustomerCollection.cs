@@ -46,6 +46,26 @@ namespace Camera_Testing
             Assert.AreEqual(AllCustomers.CustomerList, TestList);
         }
 
+
+        [TestMethod]
+        public void ThisCustomerPropertyOK()
+        {
+            //create instance of the class we want to create
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create some test data to assign to the property
+            clsCustomer TestCustomer = new clsCustomer();
+            //set properties of the test object
+            TestCustomer.CustomerID = 1;
+            TestCustomer.CustomerFName = "First name";
+            TestCustomer.CustomerDOB = DateTime.Now.Date;
+            TestCustomer.CustomerPostCode = "LE1 1WE";
+            TestCustomer.CustomerPaymentInfo = "Credit";
+            TestCustomer.CustomerPhoneNumber = "1234567891";
+            //assign data to the property 
+            AllCustomers.ThisCustomer = TestCustomer;
+            //test to see that the two  values are the same
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestCustomer);
+        }
         //[TestMethod]
         //public void CountPropertyOK()
         //{
@@ -86,6 +106,8 @@ namespace Camera_Testing
             Assert.AreEqual(AllCustomers.Count, TestList.Count);
         }
 
+
+
         ////This test assumes that there are always 2 records in all customers object upon instanation 
         //[TestMethod]
         //public void TwoRecordsPresent()
@@ -95,6 +117,8 @@ namespace Camera_Testing
         //    //test ro see that the 2 values are the same
         //    Assert.AreEqual(AllCustomers.Count, 2);
         //}
+
+
 
     }
 }

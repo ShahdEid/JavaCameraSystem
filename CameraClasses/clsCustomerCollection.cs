@@ -110,6 +110,7 @@ namespace CameraClasses
 
         }
 
+        public clsCustomer ThisCustomer { get; set; }
     }
 }
 

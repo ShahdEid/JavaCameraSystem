@@ -1106,7 +1106,7 @@ namespace Camera_Testing
             //string variable to store any error message
             String Error = "";
             //set the dob to a non date value
-            string CustomerPhoneNumber = "1234567891";
+            string CustomerPhoneNumber = "12345678911";
             //invoke the method
             Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
             //test to see that that the result is correct
@@ -1123,7 +1123,7 @@ namespace Camera_Testing
             //string variable to store any error message
             String Error = "";
             //set the dob to a non date value
-            string CustomerPhoneNumber = "12345678912";
+            string CustomerPhoneNumber = "123456789112";
             //invoke the method
             Error = ACustomer.Valid(CustomerDOB, CustomerFName, CustomerLName, CustomerPhoneNumber, CustomerPostCode, CustomerPaymentInfo);
             //test to see that that the result is correct

@@ -257,7 +257,7 @@ namespace CameraClasses
             }
 
             //if phone no is more than 10 characters
-            if (customerPhoneNumber.Length > 10)
+            if (customerPhoneNumber.Length > 11)
             {
                 //error
                 Error = Error + "Phone number cannot be more than 10 characters";
