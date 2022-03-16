@@ -15,48 +15,55 @@ public partial class ACustomer : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-        //create a new instance of clsCustomer
-        clsCustomer ACustomer = new clsCustomer();
-        //capture LName
-        string CustomerLName = txtLastName.Text;
-        //capture FName
-        string CustomerFName = txtFirstName.Text;
-        //capture dob
-        string CustomerDOB = txtDOB.Text;
-        //capture phone no
-        string CustomerPhoneNumber = txtPhoneNumber.Text;
-        //capture post code
-        string CustomerPostCode = txtPostCode.Text;
-        //capture payment
-        string CustomerPaymentInfo = DropDownPayment.Text;
-        //variable to store error messages 
-        string Error = "";
-        //validate data
-        Error = ACustomer.Valid(CustomerLName, CustomerFName, CustomerDOB, CustomerPaymentInfo, CustomerPhoneNumber, CustomerPostCode);
-        if (Error == "")
-        {
-            //capture LName
-            ACustomer.CustomerLName = CustomerLName;
-            //capture FName
-            ACustomer.CustomerFName = CustomerFName;
-            //capture dob
-            ACustomer.CustomerDOB = Convert.ToDateTime(CustomerDOB);
-            //capture phone no
-            ACustomer.CustomerPhoneNumber = CustomerPhoneNumber;
-            //capture post code
-            ACustomer.CustomerPostCode = CustomerPostCode;
-            //capture payment
-            ACustomer.CustomerPaymentInfo = CustomerPaymentInfo;
-            //store the customer in the session object
-            Session["ACustomer"] = ACustomer;
-            //redirect to the viewer page
-            Response.Redirect("CustomerViewer.aspx");
-        }
-        else
-        {
-            //display error
-            lblError.Text = Error;
-        }
+        ////create a new instance of clsCustomer
+        //clsCustomer ACustomer = new clsCustomer();
+        ////capture LName
+        //string CustomerLName = txtLastName.Text;
+        ////capture FName
+        //string CustomerFName = txtFirstName.Text;
+        ////capture dob
+        //string CustomerDOB = txtDOB.Text;
+        ////capture phone no
+        //string CustomerPhoneNumber = txtPhoneNumber.Text;
+        ////capture post code
+        //string CustomerPostCode = txtPostCode.Text;
+        ////capture payment
+        //string CustomerPaymentInfo = DropDownPayment.Text;
+        ////variable to store error messages 
+        //string Error = "";
+        ////validate data
+        //Error = ACustomer.Valid(CustomerLName, CustomerFName, CustomerDOB, CustomerPaymentInfo, CustomerPhoneNumber, CustomerPostCode);
+        //if (Error == "")
+        //{
+        //    //capture LName
+        //    ACustomer.CustomerLName = CustomerLName;
+        //    //capture FName
+        //    ACustomer.CustomerFName = CustomerFName;
+        //    //capture dob
+        //    ACustomer.CustomerDOB = Convert.ToDateTime(CustomerDOB);
+        //    //capture phone no
+        //    ACustomer.CustomerPhoneNumber = CustomerPhoneNumber;
+        //    //capture post code
+        //    ACustomer.CustomerPostCode = CustomerPostCode;
+        //    //capture payment
+        //    ACustomer.CustomerPaymentInfo = CustomerPaymentInfo;
+        //    //store the customer in the session object
+        //    Session["ACustomer"] = ACustomer;
+        //    //redirect to the viewer page
+        //    Response.Redirect("CustomerViewer.aspx");
+        //}
+        //else
+        //{
+        //    //display error
+        //    lblError.Text = Error;
+        //}
+
+
+
+        //add new record
+        Add();
+        //all done redirect to the main page
+        Response.Redirect("CustomerDefault.aspx");
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
@@ -86,5 +93,38 @@ public partial class ACustomer : System.Web.UI.Page
         }
 
 
+    }
+
+
+
+    //function for adding new records
+    void Add()
+    {
+        //create an instance of the customer 
+        CameraClasses.clsCustomerCollection Customer = new CameraClasses.clsCustomerCollection();
+        //validate the data on the web form
+        String Error = Customer.ThisCustomer.Valid(txtDOB.Text, txtFirstName.Text, txtLastName.Text, txtPhoneNumber.Text, txtPostCode.Text, DropDownPayment.Text);
+        //if data isOK then add it to the object
+        if (Error == "")
+        {
+            //get data entered by the user
+            Customer.ThisCustomer.CustomerDOB = Convert.ToDateTime(txtDOB.Text);
+            Customer.ThisCustomer.CustomerFName = txtFirstName.Text;
+            Customer.ThisCustomer.CustomerLName = txtLastName.Text;
+            Customer.ThisCustomer.CustomerPhoneNumber = txtPhoneNumber.Text;
+            Customer.ThisCustomer.CustomerPostCode = txtPostCode.Text;
+            Customer.ThisCustomer.CustomerPaymentInfo = DropDownPayment.Text;
+            //add the record
+            Customer.Add();
+            //all done redirect 
+            Response.Redirect("CustomerDefault.aspx");
+
+        }
+
+        else
+        {
+            //error
+            lblError.Text = "Something went wrong with the data entered" + Error;
+        }
     }
 }

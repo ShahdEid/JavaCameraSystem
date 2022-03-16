@@ -603,7 +603,7 @@ namespace Camera_Testing
             //set the date to today
             TestDate = DateTime.Now.Date;
             //change the date to whatever the date is 16 years ago 
-            TestDate = TestDate.AddYears(-16);
+            TestDate = TestDate.AddYears(-15);
             //convert the date  variable to a string variable
             string CustomerDOB = TestDate.ToString();
             //invoke the method
@@ -626,7 +626,7 @@ namespace Camera_Testing
             //set the date to today
             TestDate = DateTime.Now.Date;
             //change the date to whatever the date is 15 years ago 
-            TestDate = TestDate.AddYears(-15);
+            TestDate = TestDate.AddYears(-14);
             //convert the date  variable to a string variable
             string CustomerDOB = TestDate.ToString();
             //invoke the method

@@ -8,18 +8,18 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:ListBox ID="lstCustomers" runat="server" Height="162px" Width="199px"></asp:ListBox>
+        <asp:ListBox ID="lstCustomers" runat="server" Height="162px" Width="199px" OnSelectedIndexChanged="lstCustomers_SelectedIndexChanged"></asp:ListBox>
         <br />
         Please Enter a First Name<br />
         <div>
             <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-            <asp:Button ID="Button1" runat="server" Text="Apply" />
-            <asp:Button ID="Button2" runat="server" Text="Display" />
+            <asp:Button ID="btnApply" runat="server" Text="Apply" OnClick="Button1_Click" />
+            &nbsp;<asp:Button ID="btnDisplay" runat="server" Text="Display" />
         </div>
         <p>
-            <asp:Button ID="Button3" runat="server" Text="Add" />
-            <asp:Button ID="Button4" runat="server" Text="Edit" />
-            <asp:Button ID="Button5" runat="server" Text="Delete" />
+            <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" />
+            <asp:Button ID="btnEdit" runat="server" Text="Edit" Width="36px" />
+            <asp:Button ID="btnDelete" runat="server" Text="Delete" />
         </p>
     </form>
 </body>

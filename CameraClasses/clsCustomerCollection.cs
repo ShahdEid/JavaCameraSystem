@@ -11,6 +11,8 @@ namespace CameraClasses
 
         //private data memeber for the list
         List<clsCustomer> mCustomerList = new List<clsCustomer>();
+        //private data memeber ThisCustomer
+        clsCustomer mThisCustomer = new clsCustomer();
 
         //constructor for the class
         public clsCustomerCollection()
@@ -110,7 +112,36 @@ namespace CameraClasses
 
         }
 
-        public clsCustomer ThisCustomer { get; set; }
+        public clsCustomer ThisCustomer
+        {
+            get
+            {
+                //return priv data
+                return mThisCustomer;
+            }
+            set
+            {
+                //set priv data
+                mThisCustomer = value;
+            }
+        }
+
+        public int Add()
+        {
+            //adds a new record to the db based on the values of mThisCustomer
+            //connect to db
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored proc
+            DB.AddParameter("@CustomerDOB", mThisCustomer.CustomerDOB);
+            DB.AddParameter("@CustomerFName", mThisCustomer.CustomerFName);
+            DB.AddParameter("@CustomerLName", mThisCustomer.CustomerLName);
+            DB.AddParameter("@CustomerPhoneNumber", mThisCustomer.CustomerPhoneNumber);
+            DB.AddParameter("@CustomerPaymentInfo", mThisCustomer.CustomerPaymentInfo);
+            DB.AddParameter("@CustomerPostCode", mThisCustomer.CustomerPostCode);
+            //execute query returning the pk value
+            return DB.Execute("sproc_tblCustomer_Insert");
+
+        }
     }
 }
 
