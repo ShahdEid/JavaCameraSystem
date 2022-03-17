@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System;
+using CameraClasses;
 
 
 
@@ -142,6 +143,19 @@ namespace CameraClasses
             return DB.Execute("sproc_tblCustomer_Insert");
 
         }
+
+        public void Delete()
+        {
+            //deletes the record pointed to by thisCustomer
+            //connects to the db
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored proc
+            DB.AddParameter("@CustomerID", mThisCustomer.CustomerID);
+            //execute the stored proc
+            DB.Execute("sproc_tblCustomer_Delete");
+        }
+
+      
     }
 }
 

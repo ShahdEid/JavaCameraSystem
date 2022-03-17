@@ -46,4 +46,27 @@ public partial class CustomerDefault : System.Web.UI.Page
         //redirect tpo the entry page
         Response.Redirect("ACustomer.aspx");
     }
+
+
+    //event handler for ze delete btn
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        //var to store the pk value of the record to be delted
+        Int32 CustomerID;
+        //if a record has ben selected from the list
+        if (lstCustomers.SelectedIndex != -1)
+        {
+            //get pk value of the record to delete 
+            CustomerID = Convert.ToInt32(lstCustomers.SelectedValue);
+            //store the data in the session object
+            Session["CustomerID"] = CustomerID;
+            //redirect to the delete page
+            Response.Redirect("CustomerDelete.aspx");
+        }
+        else
+        {
+            //error
+            lblError.Text = "You have to select a record to delete from the list above";
+        }
+    }
 }
