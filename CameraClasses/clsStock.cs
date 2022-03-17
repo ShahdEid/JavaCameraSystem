@@ -171,6 +171,30 @@ namespace CameraClasses
                 //record the error
                 Error = Error + "The stock type must be less than 50 characters : ";
             }
+            //if the StockQuantity is less than 1
+            if (stockQuantity.Length == 0)
+            {
+                //record the error
+                Error = Error + "The stock quantity may not be blank : ";
+            }
+            //if the StockQuantity is greater than 9999
+            if (stockQuantity.Length > 4)
+            {
+                //record the error
+                Error = Error + "The stock quantity must be less than 9 999 : ";
+            }
+            //if the StockPrice is blank
+            if (stockPrice.Length == 0)
+            {
+                //record the error
+                Error = Error + "The stock price may not be blank : ";
+            }
+            //if the StockPrice is greater than 99 999
+            if (stockPrice.Length > 5)
+            {
+                //record the error
+                Error = Error + "The stock price must be less than 100 000 : ";
+            }
             try
             {
                 //copy the dateAdded value to the DateTemp variable
