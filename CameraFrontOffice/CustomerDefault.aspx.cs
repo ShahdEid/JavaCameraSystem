@@ -69,4 +69,6 @@ public partial class CustomerDefault : System.Web.UI.Page
             lblError.Text = "You have to select a record to delete from the list above";
         }
     }
+
+   
 }
