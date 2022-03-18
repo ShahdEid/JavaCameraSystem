@@ -8,6 +8,8 @@ namespace CameraClasses
     {
         //private data member for the list
         List<clsStock> mStockList = new List<clsStock>();
+        //private data member thisStock
+        clsStock mThisStock = new clsStock();
 
         //constructor for the class
         public clsStockCollection()
@@ -67,6 +69,60 @@ namespace CameraClasses
                 //
             } 
         }
-        public clsStock ThisStock { get; set; }
+        public clsStock ThisStock 
+        { 
+            get
+            {
+                //return the private data
+                return mThisStock;
+            }
+            set
+            {
+                //set the private data
+                mThisStock = value;
+            }
+        }
+
+        public int Add()
+        {
+            //adds a new record to the database based on the values of mThisStock
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@StockName", mThisStock.StockName);
+            DB.AddParameter("@StockQuantity", mThisStock.StockQuantity);
+            DB.AddParameter("@StockPrice", mThisStock.StockPrice);
+            DB.AddParameter("@StockType", mThisStock.StockType);
+            DB.AddParameter("@DateAdded", mThisStock.DateAdded);
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblStock_Insert");
+        }
+
+        public void Delete()
+        {
+            //deletes the record pointed to by thisStock
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@StockId", mThisStock.StockId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_Delete");
+        }
+
+        public void Update()
+        {
+            //update an existing record based on the values of ThisStock
+            //connect to database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@StockId", mThisStock.StockId);
+            DB.AddParameter("@StockName", mThisStock.StockName);
+            DB.AddParameter("@StockQuantity", mThisStock.StockQuantity);
+            DB.AddParameter("@StockPrice", mThisStock.StockPrice);
+            DB.AddParameter("@StockType", mThisStock.StockType);
+            DB.AddParameter("@DateAdded", mThisStock.DateAdded);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_Update");
+        }
     }
 }
