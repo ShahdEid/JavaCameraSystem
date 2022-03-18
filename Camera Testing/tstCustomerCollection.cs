@@ -218,7 +218,7 @@ namespace Camera_Testing
             //find the record 
             AllCustomers.ThisCustomer.Find(PrimaryKey);
             //delete record
-            AllCustomers.Update();
+            AllCustomers.Delete();
             //now find the record
             Boolean Found = AllCustomers.ThisCustomer.Find(PrimaryKey);
             //test to see that the record was not found
