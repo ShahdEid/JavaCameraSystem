@@ -100,17 +100,33 @@ namespace CameraClasses
         }
 
 
-        public bool Find(int orderID)
+        public bool Find(int OrderID)
         {
-            //set the private data members to the test data value 
-            mOrderID = 3;
-            mDateOfOrder = Convert.ToDateTime("09/01/2022");
-            mCustomerID = 9;
-            mPaymentStatus = true;
-            mProductID = 61;
-            mQuantity = "11";
-            //always return true
-            return true;
+            //craete an intance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            // Add the parameter for the order id to find it
+            DB.AddParameter("OrderID", OrderID);
+            //execute the sored procedure 
+            DB.Execute("sproc_tblOrder_FilterByOrderID");
+            // if one record is found (there should be either one or zero )
+            if (DB.Count == 1)
+            {
+                mOrderID = Convert.ToInt32(DB.DataTable.Rows[0]["OrderID"]);
+                mDateOfOrder = Convert.ToDateTime(DB.DataTable.Rows[0]["DateOfOrder"]);
+                mPaymentStatus = Convert.ToBoolean(DB.DataTable.Rows[0]["PaymentStatus"]);
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
+                mProductID = Convert.ToInt32(DB.DataTable.Rows[0]["ProductID"]);
+                mQuantity = Convert.ToString(DB.DataTable.Rows[0]["Quantity"]);
+                // return that everything worked ok 
+                return true;
+            }
+            else
+            {
+                //return false indicating a problem 
+                return false;
+            }
+
+
         }
     }
 }
