@@ -8,8 +8,12 @@ using CameraClasses;
 
 public partial class CustomerDefault : System.Web.UI.Page
 {
+    //var to store the pk with pagelevel scope
+    Int32 CustomerID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the no of the customer to be processed
+        //CustomerID = Convert.ToInt32(Session["CustomerID"]);
         //if this is the first time the page is diplayed
         if (IsPostBack == false)
         {
@@ -32,12 +36,8 @@ public partial class CustomerDefault : System.Web.UI.Page
 
     }
 
-    protected void lstCustomers_SelectedIndexChanged(object sender, EventArgs e)
-    {
 
-    }
 
- 
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
@@ -70,5 +70,29 @@ public partial class CustomerDefault : System.Web.UI.Page
         }
     }
 
-   
+
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        //var to store pk value of the record to be edited
+        Int32 CustomerID;
+        //if sa record has been selected from the list
+        if (lstCustomers.SelectedIndex != 1)
+        {
+            //get the pk value of the record to edit
+            CustomerID = Convert.ToInt32(lstCustomers.SelectedValue);
+            //store the data in the session object
+            Session["CustomerID"] = CustomerID;
+            //Redirect to edit page
+            Response.Redirect("ACustomer.aspx");
+        }
+        //no record has been selected
+        else
+        {
+            //error
+            lblError.Text = "You have to select a record to edit from the list";
+        }
+    }
+
+
 }
