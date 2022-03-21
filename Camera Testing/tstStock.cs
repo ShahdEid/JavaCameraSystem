@@ -154,7 +154,7 @@ namespace Camera_Testing
             //invoke the method
             Found = MyStock.Find(StockId);
             //check the property
-            if (MyStock.DateAdded != Convert.ToDateTime("03/02/2022"))
+            if (MyStock.DateAdded != Convert.ToDateTime("21/03/2022"))
             {
                 OK = false;
             }

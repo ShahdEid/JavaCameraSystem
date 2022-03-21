@@ -13,7 +13,7 @@
         <asp:ListBox ID="lstStock" runat="server" Height="207px" Width="297px"></asp:ListBox>
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 13px; top: 241px; position: absolute"></asp:Label>
         <p style="z-index: 1; left: 12px; top: 266px; position: absolute; height: 27px; width: 1115px">
-            Please enter a stock name:</p>
+            Please enter a stock type:</p>
         <asp:TextBox ID="txtStockName" runat="server" Width="214px" style="z-index: 1; left: 10px; top: 304px; position: absolute"></asp:TextBox>
         <p>
             <asp:Button ID="btnApply" runat="server" style="z-index: 1; left: 10px; top: 339px; position: absolute" Text="Apply" />
