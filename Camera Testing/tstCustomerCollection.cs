@@ -131,7 +131,7 @@ namespace Camera_Testing
             TestItem.CustomerID = 1;
             TestItem.CustomerFName = "First name";
             TestItem.CustomerLName = "LastName";
-            TestItem.CustomerDOB = DateTime.Now.Date;
+            TestItem.CustomerDOB = Convert.ToDateTime("17/09/2000");
             TestItem.CustomerPostCode = "LE1 1WE";
             TestItem.CustomerPaymentInfo = "Credit";
             TestItem.CustomerPhoneNumber = "1234567891";
@@ -163,7 +163,7 @@ namespace Camera_Testing
             TestItem.CustomerID = 1;
             TestItem.CustomerFName = "First name";
             TestItem.CustomerLName = "LastName";
-            TestItem.CustomerDOB = DateTime.Now.Date;
+            TestItem.CustomerDOB = Convert.ToDateTime("17/09/2000");
             TestItem.CustomerPostCode = "LE1 1WE";
             TestItem.CustomerPaymentInfo = "Credit";
             TestItem.CustomerPhoneNumber = "1234567891";
@@ -197,7 +197,7 @@ namespace Camera_Testing
             TestItem.CustomerID = 1;
             TestItem.CustomerFName = "First name";
             TestItem.CustomerLName = "LastName";
-            TestItem.CustomerDOB = DateTime.Now.Date;
+            TestItem.CustomerDOB = Convert.ToDateTime("17/09/2000");
             TestItem.CustomerPostCode = "LE1 1WE";
             TestItem.CustomerPaymentInfo = "Credit";
             TestItem.CustomerPhoneNumber = "1234567891";
@@ -226,5 +226,30 @@ namespace Camera_Testing
 
         }
 
+        [TestMethod]
+        public void ReportByPostCodeMethodOK()
+        {
+
+            //create instance of the class we want to create
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create an instance of the filtered data 
+            clsCustomerCollection FilterCustomers = new clsCustomerCollection();
+            //apply a blank string which should return all records
+            FilterCustomers.ReportByPostCode("");
+            //test to see that the two values are the same 
+            Assert.AreEqual(AllCustomers.Count, FilterCustomers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByPostCodeNoneFound()
+        {
+            //create an instance of the filtered data 
+            clsCustomerCollection FilterCustomers = new clsCustomerCollection();
+            //apply a post code that doesnt exist
+            FilterCustomers.ReportByPostCode("xxx xxx");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilterCustomers.Count);
+
+        }
     }
 }
