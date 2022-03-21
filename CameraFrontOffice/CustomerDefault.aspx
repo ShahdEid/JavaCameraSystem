@@ -13,7 +13,7 @@
         Please Enter a First Name<br/>
         <div>
             <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-            <asp:Button ID="Button1" runat="server" Text="Button" />
+            <asp:Button ID="Applybtn" runat="server" Text="Button" />
             &nbsp;<asp:Button ID="btnDisplay" runat="server" Text="Display" />
         </div>
         <p>
