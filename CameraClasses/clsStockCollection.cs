@@ -14,7 +14,13 @@ namespace CameraClasses
         //constructor for the class
         public clsStockCollection()
         {
-            //var for the index
+            //object for data connection
+            clsDataConnection DB = new clsDataConnection();
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_SelectAll");
+            //populate the array list with the data table
+            PopulateArray(DB);
+            /*//var for the index
             Int32 Index = 0;
             //var to store the record count
             Int32 RecordCount = 0;
@@ -39,9 +45,9 @@ namespace CameraClasses
                 //add the record to the private data member
                 mStockList.Add(MyStock);
                 //point at the next record
-                Index++;
+                Index++;*/
             }
-        }
+        
         //public property for the stock list
         public List<clsStock> StockList
         {
@@ -123,6 +129,49 @@ namespace CameraClasses
             DB.AddParameter("@DateAdded", mThisStock.DateAdded);
             //execute the stored procedure
             DB.Execute("sproc_tblStock_Update");
+        }
+
+        public void ReportByType(string StockType)
+        {
+            //filters the records based on a stock type
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //send the StockType parameter to the database
+            DB.AddParameter("@StockType", StockType);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_FilterByStockType");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populates the array list based on the data table in the parameter DB
+            //var for the index
+            Int32 Index = 0;
+            //var to store the record count
+            Int32 RecordCount;
+            //get the count of records
+            RecordCount = DB.Count;
+            //clear the private array list
+            mStockList = new List<clsStock>();
+            //while there are records to process
+            while(Index < RecordCount)
+            {
+                //create a blank address
+                clsStock MyStock = new clsStock();
+                //read in the fields from the current record
+                MyStock.StockId = Convert.ToInt32(DB.DataTable.Rows[Index]["StockId"]);
+                MyStock.StockName = Convert.ToString(DB.DataTable.Rows[Index]["StockName"]);
+                MyStock.StockQuantity = Convert.ToInt32(DB.DataTable.Rows[Index]["StockQuantity"]);
+                MyStock.StockPrice = Convert.ToInt32(DB.DataTable.Rows[Index]["StockPrice"]);
+                MyStock.StockType = Convert.ToString(DB.DataTable.Rows[Index]["StockType"]);
+                MyStock.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateAdded"]);
+                //add the record to the private data member
+                mStockList.Add(MyStock);
+                //point at the next record
+                Index++;
+            }
         }
     }
 }
