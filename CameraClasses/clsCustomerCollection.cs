@@ -39,7 +39,7 @@ namespace CameraClasses
                 ACustomer.CustomerLName = Convert.ToString(DB.DataTable.Rows[Index]["CustomerLName"]);
                 ACustomer.CustomerDOB = Convert.ToDateTime(DB.DataTable.Rows[Index]["CustomerDOB"]);
                 ACustomer.CustomerPostCode = Convert.ToString(DB.DataTable.Rows[Index]["CustomerPostCode"]);
-                ACustomer.CustomerPaymentInfo = Convert.ToString(DB.DataTable.Rows[Index]["CustomerPaymentInfo"]);
+                ACustomer.CustomerPhoneNumber = Convert.ToString(DB.DataTable.Rows[Index]["CustomerPhoneNumber"]);
                 ACustomer.CustomerPaymentInfo = Convert.ToString(DB.DataTable.Rows[Index]["CustomerPaymentInfo"]);
                 //add record to the private data member 
                 mCustomerList.Add(ACustomer);
@@ -155,7 +155,24 @@ namespace CameraClasses
             DB.Execute("sproc_tblCustomer_Delete");
         }
 
-      
+        public void Update()
+        {
+            //update an existing record based on the values of thisCustomer
+            clsDataConnection DB = new clsDataConnection();
+            //set parameters for the sproc
+
+            DB.AddParameter("@CustomerID", mThisCustomer.CustomerID);
+            DB.AddParameter("@CustomerDOB", mThisCustomer.CustomerDOB);
+            DB.AddParameter("@CustomerFName", mThisCustomer.CustomerFName);
+            DB.AddParameter("@CustomerLName", mThisCustomer.CustomerLName);
+            DB.AddParameter("@CustomerPhoneNumber", mThisCustomer.CustomerPhoneNumber);
+            DB.AddParameter("@CustomerPaymentInfo", mThisCustomer.CustomerPaymentInfo);
+            DB.AddParameter("@CustomerPostCode", mThisCustomer.CustomerPostCode);
+            //execute the sproc
+            DB.Execute("sproc_tblCustomer_Update");
+        }
+
+
     }
 }
 
