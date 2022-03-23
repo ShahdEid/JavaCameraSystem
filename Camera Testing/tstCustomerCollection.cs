@@ -240,15 +240,63 @@ namespace Camera_Testing
             Assert.AreEqual(AllCustomers.Count, FilterCustomers.Count);
         }
 
+        ////record that does exist
         [TestMethod]
-        public void ReportByPostCodeNoneFound()
+        public void ReportByPostCodeFound()
         {
             //create an instance of the filtered data 
             clsCustomerCollection FilterCustomers = new clsCustomerCollection();
             //apply a post code that doesnt exist
             FilterCustomers.ReportByPostCode("xxx xxx");
             //test to see that there are no records
+            Assert.AreEqual(1, FilterCustomers.Count);
+
+        }
+
+        //Record that doesnt exist
+        [TestMethod]
+        public void ReportByPostCodeNoneFound()
+        {
+            //create an instance of the filtered data 
+            clsCustomerCollection FilterCustomers = new clsCustomerCollection();
+            //apply a post code that doesnt exist
+            FilterCustomers.ReportByPostCode("www www");
+            //test to see that there are no records
             Assert.AreEqual(0, FilterCustomers.Count);
+
+        }
+
+
+        [TestMethod]
+        public void ReportByPostCodeTestDataFound()
+        {
+            //create an instance of the filtered data 
+            clsCustomerCollection FilterCustomers = new clsCustomerCollection();
+            //var to store outcome
+            Boolean OK = true;
+            //apply a post code tht doesnt exist
+            FilterCustomers.ReportByPostCode("LE3 0IW");
+            //check that the correct nio of records are found 
+            if (FilterCustomers.Count == 1)
+            {
+                //check the first record is ID 2
+                if (FilterCustomers.CustomerList[0].CustomerID != 2)
+                {
+                    OK = false;
+                }
+
+            }
+            ////check the first record is ID 3
+            //if (FilterCustomers.CustomerList[1].CustomerID != 32)
+            //{
+            //    OK = false;
+            //}
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
 
         }
     }
