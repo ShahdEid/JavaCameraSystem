@@ -247,9 +247,9 @@ namespace Camera_Testing
             //create an instance of the filtered data 
             clsCustomerCollection FilterCustomers = new clsCustomerCollection();
             //apply a post code that doesnt exist
-            FilterCustomers.ReportByPostCode("xxx xxx");
+            FilterCustomers.ReportByPostCode("XXX XXX");
             //test to see that there are no records
-            Assert.AreEqual(1, FilterCustomers.Count);
+            Assert.AreEqual(2, FilterCustomers.Count);
 
         }
 
