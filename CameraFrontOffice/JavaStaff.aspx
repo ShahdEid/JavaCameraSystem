@@ -26,24 +26,26 @@
         <p>
             <asp:Label ID="Label2" runat="server" Text="PhoneNo"></asp:Label>
 &nbsp;&nbsp;
-            <asp:TextBox ID="txtPhoneNo" runat="server" style="margin-left: 67px"></asp:TextBox>
+            <asp:TextBox ID="txtStaffPhoneNo" runat="server" style="margin-left: 67px"></asp:TextBox>
         </p>
         <p>
             <asp:Label ID="Label4" runat="server" Text="HouseNo"></asp:Label>
 &nbsp;&nbsp;
-            <asp:TextBox ID="txtHouseNo" runat="server" style="margin-left: 67px"></asp:TextBox>
+            <asp:TextBox ID="txtStaffHouseNo" runat="server" style="margin-left: 67px"></asp:TextBox>
         </p>
         <p>
             <asp:Label ID="Label5" runat="server" Text="PostCode"></asp:Label>
 &nbsp;&nbsp;
-            <asp:TextBox ID="txtPostCode" runat="server" style="margin-left: 67px"></asp:TextBox>
+            <asp:TextBox ID="txtStaffPostCode" runat="server" style="margin-left: 67px"></asp:TextBox>
         </p>
         <p>
             <asp:Label ID="Label6" runat="server" Text="StreetName"></asp:Label>
-            <asp:TextBox ID="txtStreetName" runat="server" style="margin-left: 67px" Width="121px"></asp:TextBox>
+            <asp:TextBox ID="txtStaffStreet" runat="server" style="margin-left: 67px" Width="121px"></asp:TextBox>
         </p>
         <p>
-            DateAdded<asp:TextBox ID="txtDateAdded" runat="server" OnTextChanged="TextBox1_TextChanged" style="margin-left: 69px" Width="120px"></asp:TextBox>
+           
+            Date Added<asp:TextBox ID="txtDateAdded" runat="server" style="margin-left: 62px; margin-bottom: 0px" Width="115px"></asp:TextBox>
+           
         </p>
         <asp:Button ID="btnOk" runat="server" OnClick="btnOk_Click" Text="Ok" Width="143px" />
         <asp:Button ID="btnCancel" runat="server" Text="Cancel" Width="193px" />

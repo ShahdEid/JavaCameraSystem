@@ -22,12 +22,51 @@ public partial class JavaStaff : System.Web.UI.Page
 
     protected void btnOk_Click(object sender, EventArgs e)
     {
-        //An instamce og clsStaff
+        //creating an instance of the clsStaff
         clsStaff JavaStaff = new clsStaff();
-        //capture the houuse No
-      //  JavaStaff.StaffID = txtStaffID.Text;
-            //store the houseNo in the session object
-            Session["JavaStaff"] = JavaStaff;
+        //capture the staffId
+        string  StaffID = txtStaffID.Text;
+        //capture the sataff name
+        string StaffName = txtStaffName.Text;
+        //capture the staff dob
+        string  StaffDOB = txtStaffDOB.Text;
+        //capture the staff phone ni
+        string StaffPhoneNo = txtStaffPhoneNo.Text;
+        //capture the house no
+        string StaffHouseNo = txtStaffHouseNo.Text;
+        //capture the postcode
+        string StaffPostCode = txtStaffPostCode.Text;
+        //capture the street name
+        string StaffStreet = txtStaffStreet.Text ;
+        //capture the date added
+        string  DateAdded = txtDateAdded.Text ;
+
+        //variable to store any error
+        string Error = "";
+        //validate the data
+        Error = JavaStaff.Valid(StaffID, StaffName, StaffPhoneNo, StaffHouseNo, StaffStreet, StaffDOB, StaffPostCode, DateAdded);
+
+        if (Error == "")
+        {
+            //capture the staffId
+            JavaStaff.StaffID = StaffID;
+            //capture the sataff name
+            JavaStaff.StaffName = StaffName;
+            //capture the staff dob
+            JavaStaff.DOB = StaffDOB;
+            //capture the staff phone ni
+            JavaStaff.StaffPhoneNo = StaffPhoneNo;
+            //capture the house no
+            JavaStaff.StaffHouseNo = StaffHouseNo;
+            //capture the postcode
+            JavaStaff.StaffPostCode = StaffPostCode;
+            //capture the street name
+            JavaStaff.StaffStreet = StaffStreet;
+            //capture the date added
+            JavaStaff.DateAdded = DateAdded;
+        }
+
+        Session["JavaStaff"] = JavaStaff;
         //redirect to the viewer page
         Response.Redirect("JavaStaff.aspx");
         
@@ -54,10 +93,10 @@ public partial class JavaStaff : System.Web.UI.Page
             //display the values of the p[roperties in the form
             txtStaffName.Text = JavaStaff.StaffName;
             txtStaffDOB.Text = JavaStaff.DOB.ToString();
-            txtPhoneNo.Text = JavaStaff.StaffPhoneNo;
-            txtPostCode.Text = JavaStaff.PostCode;
-            txtHouseNo.Text = JavaStaff.HouseNo;
-            txtStreetName.Text = JavaStaff.Street;
+            txtStaffPhoneNo.Text = JavaStaff.StaffPhoneNo.ToString();
+            txtStaffPostCode.Text = JavaStaff.StaffPostCode;
+            txtStaffHouseNo.Text = JavaStaff.StaffHouseNo;
+            txtStaffStreet.Text = JavaStaff.StaffStreet;
 
 
         }
