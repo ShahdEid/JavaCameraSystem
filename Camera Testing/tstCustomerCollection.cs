@@ -241,17 +241,17 @@ namespace Camera_Testing
         }
 
         ////record that does exist
-        //[TestMethod]
-        //public void ReportByPostCodeFound()
-        //{
-        //    //create an instance of the filtered data 
-        //    clsCustomerCollection FilterCustomers = new clsCustomerCollection();
-        //    //apply a post code that doesnt exist
-        //    FilterCustomers.ReportByPostCode("xxx xxx");
-        //    //test to see that there are no records
-        //    Assert.AreEqual(1, FilterCustomers.Count);
+        [TestMethod]
+        public void ReportByPostCodeFound()
+        {
+            //create an instance of the filtered data 
+            clsCustomerCollection FilterCustomers = new clsCustomerCollection();
+            //apply a post code that doesnt exist
+            FilterCustomers.ReportByPostCode("xxx xxx");
+            //test to see that there are no records
+            Assert.AreEqual(1, FilterCustomers.Count);
 
-        //}
+        }
 
         //Record that doesnt exist
         [TestMethod]
