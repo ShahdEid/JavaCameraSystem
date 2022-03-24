@@ -193,6 +193,21 @@ namespace CameraClasses
             PopulateArray(DB);
         }
 
+        public void ReportByFName(string CustomerFName)
+        {
+            //filters records based on a full ot partial post code
+            //connect to db
+            clsDataConnection DB = new clsDataConnection();
+            //send thepostcode parameter to the db 
+            DB.AddParameter("@CustomerFName", CustomerFName);
+            //execute the sproc
+            DB.Execute("sproc_tblCustomer_FilterByFName");
+            //populate the array list with the data tavle
+            PopulateArray(DB);
+        }
+
+
+
 
         void PopulateArray(clsDataConnection DB)
         {

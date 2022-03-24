@@ -299,5 +299,85 @@ namespace Camera_Testing
             Assert.IsTrue(OK);
 
         }
+
+
+        [TestMethod]
+        public void ReportByFNameMethodOK()
+        {
+
+            //create instance of the class we want to create
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create an instance of the filtered data 
+            clsCustomerCollection FilterCustomers = new clsCustomerCollection();
+            //apply a blank string which should return all records
+            FilterCustomers.ReportByFName("");
+            //test to see that the two values are the same 
+            Assert.AreEqual(AllCustomers.Count, FilterCustomers.Count);
+        }
+
+        ////record that does exist
+        [TestMethod]
+        public void ReportByFNameFound()
+        {
+            //create an instance of the filtered data 
+            clsCustomerCollection FilterCustomers = new clsCustomerCollection();
+            //apply a post code that doesnt exist
+            FilterCustomers.ReportByFName("Shahd");
+            //test to see that there are no records
+            Assert.AreEqual(1, FilterCustomers.Count);
+
+        }
+
+
+        //Record that doesnt exist
+        [TestMethod]
+        public void ReportByFNameNoneFound()
+        {
+            //create an instance of the filtered data 
+            clsCustomerCollection FilterCustomers = new clsCustomerCollection();
+            //apply a post code that doesnt exist
+            FilterCustomers.ReportByFName("www www");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilterCustomers.Count);
+
+        }
+
+
+        [TestMethod]
+        public void ReportByFNameTestDataFound()
+        {
+            //create an instance of the filtered data 
+            clsCustomerCollection FilterCustomers = new clsCustomerCollection();
+            //var to store outcome
+            Boolean OK = true;
+            //apply a post code tht doesnt exist
+            FilterCustomers.ReportByFName("Shahd");
+            //check that the correct nio of records are found 
+            if (FilterCustomers.Count == 2)
+            {
+                //check the first record is ID 2
+                if (FilterCustomers.CustomerList[0].CustomerID != 147)
+                {
+                    OK = false;
+                }
+
+            }
+            ////check the first record is ID 3
+            //if (FilterCustomers.CustomerList[1].CustomerID != 155)
+            //{
+            //    OK = false;
+            //}
+            
+            else
+            {
+                OK = false;
+            }
+                //test to see that there are no records
+                Assert.IsTrue(OK);
+
+            } 
+     
+    
     }
-}
+ }
+
