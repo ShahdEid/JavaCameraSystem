@@ -5,6 +5,35 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 129px;
+            z-index: 1;
+            left: 174px;
+            top: 339px;
+            position: absolute;
+        }
+        .auto-style2 {
+            z-index: 1;
+            left: 236px;
+            top: 384px;
+            position: absolute;
+        }
+        .auto-style3 {
+            z-index: 1;
+            left: 122px;
+            top: 384px;
+            position: absolute;
+            width: 69px;
+        }
+        .auto-style4 {
+            z-index: 1;
+            left: 10px;
+            top: 384px;
+            position: absolute;
+            width: 68px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -17,11 +46,11 @@
         <asp:TextBox ID="txtStockName" runat="server" Width="214px" style="z-index: 1; left: 10px; top: 304px; position: absolute"></asp:TextBox>
         <p>
             <asp:Button ID="btnApply" runat="server" style="z-index: 1; left: 10px; top: 339px; position: absolute" Text="Apply" />
-            <asp:Button ID="btnDisplayAll" runat="server" style="width: 129px; z-index: 1; left: 101px; top: 339px; position: absolute" Text="Display All" />
+            <asp:Button ID="btnDisplayAll" runat="server" Text="Display All" CssClass="auto-style1" />
         </p>
-        <asp:Button ID="btnAdd" runat="server" style="z-index: 1; left: 10px; top: 384px; position: absolute" Text="Add" OnClick="btnAdd_Click" />
-        <asp:Button ID="btnDelete" runat="server" style="z-index: 1; left: 177px; top: 384px; position: absolute" Text="Delete" OnClick="btnDelete_Click" />
-        <asp:Button ID="btnEdit" runat="server" style="z-index: 1; left: 92px; top: 384px; position: absolute" Text="Edit" OnClick="btnEdit_Click" />
+        <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" CssClass="auto-style4" />
+        <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" CssClass="auto-style2" />
+        <asp:Button ID="btnEdit" runat="server" Text="Edit" OnClick="btnEdit_Click" CssClass="auto-style3" />
     </form>
 </body>
 </html>
