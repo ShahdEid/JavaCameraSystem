@@ -9,7 +9,7 @@ using CameraClasses;
 
 public partial class JavaStaff : System.Web.UI.Page
 {
-   
+
     protected void Page_Load(object sender, EventArgs e)
     {
         //cretae an instance of clsStaff
@@ -18,9 +18,24 @@ public partial class JavaStaff : System.Web.UI.Page
         JavaStaff = (clsStaff)Session["JavaStaff"];
         //display the house number for this entry
         Response.Write(JavaStaff.StaffID);
-        
-    }
 
+    }
+    /*
+    void DisplayStaffs()
+    {
+        //creating an instance of the staff collection
+        CameraClasses.clsStaffCollection JavaStaff = new CameraClasses.clsStaffCollection();
+        //set the data source to the list of staff in the collection
+
+        lstStaff.DataSource = JavaStaff.StaffList;
+        //set the name of the primary key
+        lstStaff.DataValueField = "StaffID";
+        //set the data field to display
+        lstStaff.DataTextField = "PostCode";
+        //BIND THE DATA to the list 
+        lstStaff.DataBind();
+        
+    }*/
     protected void btnOk_Click(object sender, EventArgs e)
     {
         //creating an instance of the clsStaff
@@ -45,7 +60,7 @@ public partial class JavaStaff : System.Web.UI.Page
         //variable to store any error
         string Error = "";
         //validate the data
-        Error = JavaStaff.Valid(StaffID,  StaffName, StaffPhoneNo, StaffHouseNo, StaffStreet, StaffDOB, StaffPostCode, DateAdded);
+        Error = JavaStaff.Valid(StaffID, StaffName, StaffPhoneNo, StaffHouseNo, StaffStreet, StaffDOB, StaffPostCode, DateAdded);
 
         if (Error == "")
         {
