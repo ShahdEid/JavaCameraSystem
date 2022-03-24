@@ -45,7 +45,7 @@ namespace Camera_Testing
             //test to see that the two values are the same
             Assert.AreEqual(AllStaff.StaffList, TestList);
         }
-        /*
+        
         [TestMethod]
         public void CountPropertyOK()
         {
@@ -57,7 +57,7 @@ namespace Camera_Testing
             AllStaff.Count = SomeCount;
             //test to see that the two values are the same
             Assert.AreEqual(AllStaff.Count, SomeCount);
-        }*/
+        }
 
         [TestMethod]
         public void ThisStaffkPropertyOK()
