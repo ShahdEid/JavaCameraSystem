@@ -324,7 +324,7 @@ namespace Camera_Testing
             //apply a post code that doesnt exist
             FilterCustomers.ReportByFName("Shahd");
             //test to see that there are no records
-            Assert.AreEqual(1, FilterCustomers.Count);
+            Assert.AreEqual(2, FilterCustomers.Count);
 
         }
 
