@@ -41,44 +41,6 @@ public partial class MyStock : System.Web.UI.Page
             //update the record
             Update();
         }
-        /*//create an instance of clsStock
-        clsStock MyStock = new clsStock();
-        //capture the StockName
-        string StockName = txtStockName.Text;
-        //capture the StockType
-        string StockType = txtStockType.Text;
-        //capture the StockPrice
-        string StockPrice = txtStockPrice.Text;
-        //capture the StockQuantity
-        string StockQuantity = txtStockQuantity.Text;
-        //capture the DateAdded
-        string DateAdded = txtDateAdded.Text;
-        //variable to store any error message
-        string Error = "";
-        //validate the data
-        Error = MyStock.Valid(StockName, StockType, StockPrice, StockQuantity, DateAdded);
-        if (Error == "")
-        {
-            //capture the StockName
-            MyStock.StockName = StockName;
-            //capture the StockType
-            MyStock.StockType = StockType;
-            //capture the StockPrice
-            MyStock.StockPrice = Convert.ToDecimal(StockPrice);
-            //capture the StockQuantity
-            MyStock.StockQuantity = Convert.ToInt32(StockQuantity);
-            //capture the DateAdded
-            MyStock.DateAdded = Convert.ToDateTime(DateAdded);
-            //store the stock in the session object
-            Session["MyStock"] = MyStock;
-            //redirect to the viewer page
-            Response.Redirect("MyStockView.aspx");
-        }
-        else
-        {
-            //display the error message
-            lblError.Text = Error;
-        }*/
     }
 
     protected void btnFind_Click(object sender, EventArgs e)

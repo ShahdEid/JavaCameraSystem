@@ -101,7 +101,7 @@ namespace Camera_Testing
             Assert.AreEqual(AllStock.Count, TestList.Count);
         }
 
-        /*[TestMethod]
+        [TestMethod]
         public void AddMethodOK()
         {
             //create an instance of the class clsStockCollection
@@ -111,7 +111,7 @@ namespace Camera_Testing
             //var to store the primary key
             Int32 PrimaryKey = 0;
             //set its properties
-            TestItem.StockName = "Canon";
+            TestItem.StockName = "Canon 1DX";
             TestItem.StockType = "DSLR Camera";
             TestItem.StockQuantity = 2;
             TestItem.StockPrice = 1000;
@@ -126,7 +126,7 @@ namespace Camera_Testing
             AllStock.ThisStock.Find(PrimaryKey);
             //test to see that the values are the same
             Assert.AreEqual(AllStock.ThisStock, TestItem);
-        }*/
+        }
 
         [TestMethod]
         public void DeleteMethodOK()
@@ -160,7 +160,7 @@ namespace Camera_Testing
             Assert.IsFalse(Found);
         }
 
-        /*[TestMethod]
+        [TestMethod]
         public void UpdateMethodOK()
         {
             //create an instance of the class clsStockCollection
@@ -195,9 +195,9 @@ namespace Camera_Testing
             AllStock.ThisStock.Find(PrimaryKey);
             //test to see ThisStock matches the test data
             Assert.AreEqual(AllStock.ThisStock, TestItem);
-        }*/
+        }
 
-        [TestMethod]
+        /*[TestMethod]
         public void ReportByTypeMethodOK()
         {
             //create an instance of the filtered data
@@ -237,6 +237,6 @@ namespace Camera_Testing
             }
             //test to see that there are no records
             Assert.IsTrue(OK);
-        }
+        }*/
     }
 }
