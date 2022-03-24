@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using Camera_Testing;
-using CameraClasses;
 
 public partial class JavaStaff : System.Web.UI.Page
 {
@@ -38,6 +32,7 @@ public partial class JavaStaff : System.Web.UI.Page
     }*/
     protected void btnOk_Click(object sender, EventArgs e)
     {
+        
         //creating an instance of the clsStaff
         clsStaff JavaStaff = new clsStaff();
         //capture the staffId
@@ -116,6 +111,37 @@ public partial class JavaStaff : System.Web.UI.Page
 
 
         }
+        //function for adding new records
+        void Add()
+        {
+            //create an instance of the customer 
+            CameraClasses.clsStaffCollection Staffs = new CameraClasses.clsStaffCollection();
+            //validate the data on the web form
+            String Error = Staffs.ThisStaff.Valid(txtStaffDOB.Text, txtStaffName.Text, txtStaffStreet.Text, txtStaffPhoneNo.Text, txtStaffPostCode.Text, txtStaffHouseNo.Text,txtDateAdded.Text );
+            //if data isOK then add it to the object
+            if (Error == "")
+            {
+                //get data entered by the user
+                Staffs.ThisStaff.StaffDOB = Convert.ToDateTime(txtStaffDOB.Text);
+                Staffs.ThisStaff.StaffName = txtStaffName.Text;
+                Staffs.ThisStaff.StaffStreet= txtStaffStreet.Text;
+                Staffs.ThisStaff.StaffPhoneNo = txtStaffPhoneNo.Text;
+                Staffs.ThisStaff.StaffPostCode = txtStaffPostCode.Text;
+                Staffs.ThisStaff.StaffHouseNo = txtStaffPostCode.Text;
+                Staffs.ThisStaff.DateAdded  = Convert.ToDateTime(txtDateAdded.Text);
 
+                //add the record
+                Staffs.Add();
+                //all done redirect 
+                Response.Redirect("CustomerDefault.aspx");
+
+            }
+
+            else
+            {
+                //error
+                lblError.Text = "Something went wrong with the data entered" + Error;
+            }
+        }
     }
 }

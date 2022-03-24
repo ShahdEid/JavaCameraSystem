@@ -10,7 +10,11 @@ namespace Camera_Testing
 {
     [TestClass]
     public class tstStaffCollection
-    {
+    {  //private data member for the list
+        List<clsStaff> mStaffList = new List<clsStaff>();
+        //private data member thisStaff
+        clsStaff mThisStaff = new clsStaff();
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -19,6 +23,8 @@ namespace Camera_Testing
             //testing to see if that exist
             Assert.IsNotNull(AllStaff);
         }
+
+        
         [TestMethod]
         public void StaffListOK()
         {
@@ -118,4 +124,146 @@ namespace Camera_Testing
             Assert.AreEqual(AllStaff.Count, 2);
         }
     }
+    [TestMethod]
+    public void AddMethodOK()
+    {
+        //create an instance of the class clsStockCollection
+        clsStaffCollection JavaStaff= new clsStaffCollection();
+        //create an item of test data
+        clsStaff TestStaff= new clsStaff();
+        //var to store the primary key
+        Int32 PrimaryKey = 0;
+        //set its properties
+        TestStaff.StaffID = 1;
+        TestStaff.StaffName = "Canon";
+        TestStaff.StaffDOB = DateTime.Now.Date;
+        TestStaff.StaffPhoneNo = "12345678901";
+        TestStaff.StaffHouseNo = "1";
+        TestStaff.StaffPostCode = "LE25HB";
+        TestStaff.StaffStreet = "Brabazon";
+        TestStaff.DateAdded = DateTime.Now.Date;
+        //set ThisStock to the test data
+        JavaStaff.ThisStaff = TestStaff;
+        //add the record
+        PrimaryKey = JavaStaff.Add();
+        //set the primary key of the test data
+        TestStaff.StaffID = PrimaryKey;
+        //find the record
+        JavaStaff.ThisStaff.Find(PrimaryKey);
+        //test to see that the values are the same
+        Assert.AreEqual(JavaStaff.ThisStaff, TestStaff);
+    }
+    [TestMethod]
+    public void DeleteMethodOK()
+    {
+        //create an instance of the class clsStockCollection
+        clsStaffCollection AllStaff = new clsStaffCollection();
+        //create an item of test data
+        clsStaff TestStaff = new clsStaff();
+        //var to store the primary key
+        Int32 PrimaryKey = 0;
+        //set its properties
+        TestStaff.StaffID = 1;
+        TestStaff.StaffName = "Canon";
+        TestStaff.StaffDOB = DateTime.Now.Date;
+        TestStaff.StaffPhoneNo = "12345678901";
+        TestStaff.StaffHouseNo = "1";
+        TestStaff.StaffPostCode = "LE25HB";
+        TestStaff.StaffStreet = "Brabazon";
+        TestStaff.DateAdded = DateTime.Now.Date;
+        //set ThisStock to the test data
+        AllStaff.ThisStaff = TestStaff;
+        //add the record
+        PrimaryKey = AllStaff.Add();
+        //set the primary key of the test data
+        TestStaff.StaffID = PrimaryKey;
+        //find the record
+        AllStaff.ThisStaff.Find(PrimaryKey);
+        //delete the record
+        AllStaff.Delete();
+        //now find the record
+        Boolean Found = AllStaff.ThisStaff.Find(PrimaryKey);
+        //test to see that the record was not found
+        Assert.IsFalse(Found);
+    }
+
+    /*[TestMethod]
+    public void UpdateMethodOK()
+    {
+        //create an instance of the class clsStockCollection
+        clsStockCollection AllStock = new clsStockCollection();
+        //create an item of test data
+        clsStock TestItem = new clsStock();
+        //var to store the primary key
+        Int32 PrimaryKey = 0;
+        //set its properties
+        TestItem.StockName = "Canon 5D Mark IV";
+        TestItem.StockType = "DSLR Camera";
+        TestItem.StockQuantity = 2;
+        TestItem.StockPrice = 1000;
+        TestItem.DateAdded = DateTime.Now.Date;
+        //set ThisStock to the test data
+        AllStock.ThisStock = TestItem;
+        //add the record
+        PrimaryKey = AllStock.Add();
+        //set the primary key of the test data
+        TestItem.StockId = PrimaryKey;
+        //modify the test data
+        TestItem.StockName = "Canon 5D Mark III";
+        TestItem.StockType = "DSLR Camera";
+        TestItem.StockQuantity = 6;
+        TestItem.StockPrice = 890;
+        TestItem.DateAdded = DateTime.Now.Date;
+        //set the record based on the new test data
+        AllStock.ThisStock = TestItem;
+        //update the record
+        AllStock.Update();
+        //find the record
+        AllStock.ThisStock.Find(PrimaryKey);
+        //test to see ThisStock matches the test data
+        Assert.AreEqual(AllStock.ThisStock, TestItem);
+    }*/
+
+    [TestMethod]
+    public void ReportByStaffNameMethodOK()
+    {
+        //create an instance of the filtered data
+        clsStaffCollection FilteredStaff = new clsStaffCollection();
+        //apply a stock type that doesn't exist
+        FilteredStaff.ReportByStaffName("xxx");
+        //test to see that there are no records
+        Assert.AreEqual(0, FilteredStaff.Count);
+    }
+
+    [TestMethod]
+    public void ReportByStaffTestDataFound()
+    {
+        //create an instance of the filtered data
+        clsStaffCollection FilteredStaff = new clsStaffCollection();
+        //var to store outcome
+        Boolean OK = true;
+        //apply a stock type that doesn't exist
+        FilteredStaff.ReportByType("xxx");
+        //check that the correct number of records are found
+        if (FilteredStaff.Count == 2)
+        {
+            //check that the first records is ID 3
+            if (FilteredStaff.StaffList[0].StaffID!= 3)
+            {
+                OK = false;
+            }
+            //check that the first record is ID 4
+            if (FilteredStaff.StaffList[0].StaffID != 4)
+            {
+                OK = false;
+            }
+        }
+        else
+        {
+            OK = false;
+        }
+        //test to see that there are no records
+        Assert.IsTrue(OK);
+    }
 }
+

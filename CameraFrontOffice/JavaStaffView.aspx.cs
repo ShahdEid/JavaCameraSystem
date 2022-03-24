@@ -87,4 +87,5 @@ public partial class JavaStaffView : System.Web.UI.Page
             lblError.Text = "Please select a record to delete from the list";
         }
     }
+
 }
