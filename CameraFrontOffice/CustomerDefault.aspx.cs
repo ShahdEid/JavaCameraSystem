@@ -37,7 +37,7 @@ public partial class CustomerDefault : System.Web.UI.Page
     }
 
 
-    Int32 DisplayCustomer(string customerPostCode)
+    Int32 DisplayCustomer(string customerFName)
     {
         //variables
         Int32 CustomerID;
@@ -50,7 +50,7 @@ public partial class CustomerDefault : System.Web.UI.Page
 
         //create an instance 
         clsCustomerCollection Customer = new clsCustomerCollection();
-        Customer.ReportByPostCode(customerPostCode);
+        Customer.ReportByFName(customerFName);
         //var to store record count
         Int32 RecordCount;
         Int32 Index = 0;
@@ -148,7 +148,7 @@ public partial class CustomerDefault : System.Web.UI.Page
     {
         Int32 RecordCount;
         RecordCount = DisplayCustomer("");
-        lblError.Text = RecordCount + "records in the database";
+        lblError.Text = RecordCount + "records in Java Cameras database";
         txtFName.Text = "";
 
     }
