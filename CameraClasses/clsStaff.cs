@@ -77,49 +77,48 @@ namespace Camera_Testing
             }
         }
 
-        private string mStreet;
+
+       
+
+        private string mStaffPostCode;
         // dateadded private memeber variable
-        public string Street
+        public string StaffPostCode
         {
             get
             {
-                return mStreet;
+                return mStaffPostCode;
             }
             set
             {
-                mStreet = value;
+                mStaffPostCode = value;
             }
         }
 
-        private string mPostCode;
-        // dateadded private memeber variable
-        public string PostCode
+        private string mStaffHouseNo;
+        public string StaffHouseNo
         {
             get
             {
-                return mPostCode;
+                return mStaffHouseNo;
             }
             set
             {
-                mPostCode = value;
+                mStaffHouseNo = value;
             }
         }
-
-        private string mHouseNo;
+        private string mStaffStreet;
         // dateadded private memeber variable
-        public string HouseNo
+        public string StaffStreet
         {
             get
             {
-                return mHouseNo;
+                return mStaffStreet;
             }
             set
             {
-                mHouseNo = value;
+                mStaffStreet = value;
             }
         }
-
-
 
         public bool Find(int StaffID)
         {
@@ -140,10 +139,10 @@ namespace Camera_Testing
                 mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["StaffID"]);
                 mStaffName = Convert.ToString(DB.DataTable.Rows[0]["StaffName"]);
                 mStaffDOB = Convert.ToDateTime(DB.DataTable.Rows[0]["StaffDOB"]);
-                mPostCode = Convert.ToString(DB.DataTable.Rows[0]["PostCode"]);
-                mStaffPhoneNo = Convert.ToString(DB.DataTable.Rows[0]["StaffPhoneNo"]);
-                mHouseNo = Convert.ToString(DB.DataTable.Rows[0]["HouseNo"]);
-                mStreet = Convert.ToString(DB.DataTable.Rows[0]["Street"]);
+                mStaffPostCode = Convert.ToString(DB.DataTable.Rows[0]["StaffPostCode"]);
+                mStaffPhoneNo = Convert.ToString(DB.DataTable.Rows[0]["StaffStaffPhoneNo"]);
+                mStaffHouseNo = Convert.ToString(DB.DataTable.Rows[0]["StaffHouseNo"]);
+                mStaffStreet = Convert.ToString(DB.DataTable.Rows[0]["StaffStreet"]);
                 mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
                 //return that everything worked ok
                 return true;
@@ -159,11 +158,78 @@ namespace Camera_Testing
 
 
         //public string Valid(string StaffId, string StaffName, string StaffPhoneNo, string DOB, string HouseNo, string  Street, string PostCode, string DateAdded)
+        /*
 
-
-        public string Valid(Int32 staffID, string staffName, string staffPhoneNo, string houseNo, string street, string dOB, string postCode, string dateAdded)
+        public string Valid(string staffID, string staffName, string staffPhoneNo, string staffHouseNo, string staffStreet, string staffDOB, string staffPostCode, string dateAdded)
         {
-            return "";
+            //creating a string variable to store the error
+            String Error = "";
+            //if the Staff Name is blank
+            if (StaffName.Length == 0)
+            {
+                //record the error
+                Error = Error + " The Staff Name may not be blank : "; 
+            }
+            if (StaffName.Length >20)
+            {
+                //record the error
+                Error = Error + "The StaffName must be less than 20 characters : ";
+            }
+            //return any relevent error messages
+
+            //copying the date added value to the DateTemp variable
+            DateAdded = Convert.ToDateTime(dateAdded);
+            if(DateAdded < DateTime.Now.Date)
+            {
+                //record the error 
+                Error = Error + "The date cannot be in past : ";
+            }
+            //return any error messages
+            return Error;
         }
+        */
+        public string Valid(string staffID, string staffName, string staffPhoneNo, string staffHouseNo, string staffStreet, string staffDOB, string staffPostCode, string dateAdded)
+        {
+            //creating a string variable to store the error
+            String Error = "";
+            //if the Staff Name is blank
+            if (StaffName.Length == 0)
+            {
+                //record the error
+                Error = Error + " The Staff Name may not be blank : ";
+            }
+            if (StaffName.Length > 20)
+            {
+                //record the error
+                Error = Error + "The StaffName must be less than 20 characters : ";
+            }
+            //return any relevent error messages
+            try
+            {
+
+
+                //copying the date added value to the DateTemp variable
+                DateAdded = Convert.ToDateTime(DateAdded);
+                if (DateAdded < DateTime.Now.Date)
+                {
+                    //record the error 
+                    Error = Error + "The date cannot be in past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateAdded > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date";
+            }
+            //return any error messages
+            return Error;
+        }
+
     }
 }
