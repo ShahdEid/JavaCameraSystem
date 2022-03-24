@@ -128,5 +128,73 @@ namespace CameraClasses
 
 
         }
+        public string Valid(string DateOfOrder, string Quantity, string ProductID, string CustomerID)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            ////create a temporary variable to store date values
+            //  DateTime DateTemp;
+
+            //try
+            //{
+
+
+            ////    //copy the dateAdded value to the DateTemp variable
+            //DateTemp = Convert.ToDateTime(DateOfOrder);
+            //if (DateTemp < DateTime.Now.Date)
+            //{
+            //    //error
+            //    Error = Error + "The order cannotbe in the past : ";
+            //}
+
+            //    //cjeck to see if the date is greater than today's date
+            //    if (DateTemp > DateTime.Now.Date)
+            //    {
+            //        //error
+            //        Error = Error + "The order cannot be in the future : ";
+            //    }
+
+            //}
+            //catch
+            //{
+            //    //record the error
+            //    Error = Error + "The date was not a valid : ";
+            //}
+
+
+            //is the post code blank
+            if (CustomerID.Length == 0)
+            {
+                //record the error
+                Error = Error + "The customer id is be blank : ";
+            }
+
+            //is the street blank
+            if (Quantity.Length == 0)
+            {
+                //record the error
+                Error = Error + "The quantity is be blank : ";
+            }
+            //if the street is too long
+            if (Quantity.Length > 50)
+            {
+                //record the error
+                Error = Error + "The quantity must be less than 50 characters : ";
+            }
+
+            ////if the product is blank
+            if (ProductID.Length == 0)
+            {
+                //record the error
+                Error = Error + "The product id  is blank : ";
+            }
+
+
+
+            //return any error messages
+            return Error;
+        }
     }
+
 }
+

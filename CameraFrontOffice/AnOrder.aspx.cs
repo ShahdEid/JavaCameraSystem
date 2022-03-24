@@ -8,31 +8,42 @@ using System.Web.UI.WebControls;
 
 public partial class AnOrder : System.Web.UI.Page
 {
-    protected void Page_Load(object sender, EventArgs e)
-    {
-
-    }
-
-
-
-
-
-
-
-
 
 
 
     protected void btnSave_Click(object sender, EventArgs e)
     {
-        //create a new instance of ClsOrder
+        //create a new instance of clsOrder
         clsOrder AnOrder = new clsOrder();
-        //caputure the quantity 
-        AnOrder.Quantity=txtQuantity.Text;
-        //store the order id in the session object
-        Session["AnOrder"] = AnOrder;
-        //redirect to the viewer page
-        Response.Redirect("OrderViewer.aspx");
+        //caputure Date of order
+        string DateOfOrder = txtDateOfOrder.Text;
+        // caputure the quantity 
+        string Quantity = txtQuantity.Text;
+        //caputure the product id 
+        string ProductID = txtProductID.Text;
+        //caputure the customer id
+        string CustomerID = txtCustomerID.Text;
+        // variable error
+        string Error = "";
+        // validate 
+        Error = AnOrder.Valid(DateOfOrder, Quantity, ProductID, CustomerID);
+        if (Error == "")
+        {
+
+            AnOrder.DateOfOrder = Convert.ToDateTime(DateOfOrder);
+            AnOrder.Quantity = Quantity;
+            AnOrder.ProductID = Convert.ToInt32(txtProductID.Text);
+            AnOrder.CustomerID = Convert.ToInt32(txtCustomerID.Text);
+            // store the address 
+            Session["AnOrder"] = AnOrder;
+            // redirect to the viewer page
+            Response.Write("OrderViewer.aspx");
+        }
+        else
+        {
+            // display the message 
+            lblError.Text = Error;
+        }
 
     }
 

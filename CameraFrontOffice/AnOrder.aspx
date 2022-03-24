@@ -32,7 +32,6 @@
         <p class="auto-style1">
 Quantity:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="txtQuantity" runat="server"></asp:TextBox>
-            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
         </p>
         <p>
             <asp:CheckBox ID="CheckBoxPaymentStatus" runat="server" Text="Payment Status" />
@@ -40,6 +39,8 @@ Quantity:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
         <p>
             <asp:Button ID="btnSave" runat="server" OnClick="btnSave_Click" Text="Save" />
             <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
+            <asp:Label ID="lblError" runat="server"></asp:Label>
         </p>
     </form>
 </body>
