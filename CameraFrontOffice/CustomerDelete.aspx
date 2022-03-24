@@ -9,6 +9,8 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:Image ID="Image1" runat="server" />
+            <br />
             <asp:Label ID="Label1" runat="server" Text="This Customer will be permenantly delted. Are you sure you want to delete this Customer?"></asp:Label>
         </div>
         <p>

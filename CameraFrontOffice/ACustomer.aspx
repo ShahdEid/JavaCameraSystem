@@ -9,8 +9,10 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:Image ID="Image1" runat="server" />
+&nbsp;<br />
             ID&nbsp; <asp:TextBox ID="txtID" runat="server"></asp:TextBox>
-            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" BackColor="#FFCC99" BorderColor="#FF9933" Font-Bold="True" ForeColor="#CC6600" Width="88px" />
         </div>
         <p>
             Last Name&nbsp;&nbsp; <asp:TextBox ID="txtLastName" runat="server"></asp:TextBox>
@@ -38,9 +40,9 @@
             <asp:Label ID="lblError" runat="server"></asp:Label>
         </p>
         <p>
-            <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
-            &nbsp;<asp:Button ID="btnCancel" runat="server" Text="Cancel" />
-        &nbsp;</p>
+            <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" Font-Bold="True" Width="116px" />
+            &nbsp;&nbsp;<asp:Button ID="btnCancel" runat="server" Text="Cancel" Font-Bold="True" Width="146px" />
+        </p>
     </form>
 </body>
 </html>
