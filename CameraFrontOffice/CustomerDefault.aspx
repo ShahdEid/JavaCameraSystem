@@ -23,7 +23,7 @@
             <strong>Please Enter a First Name</strong><br/>
         </div>
         <div class="auto-style1">
-            <asp:TextBox ID="txtFName" runat="server" Width="199px"></asp:TextBox>
+            <asp:TextBox ID="txtFName" runat="server" Width="202px"></asp:TextBox>
             <br />
             &nbsp;<asp:Button ID="Applybtn" runat="server" Text="Apply" OnClick="Applybtn_Click" BackColor="#FFCC99" BorderColor="#FF9933" Font-Bold="True" ForeColor="#CC6600" Width="91px" />
             &nbsp;<asp:Button ID="btnDisplay" runat="server" Text="Display" OnClick="btnDisplay_Click" BackColor="#FFCC99" BorderColor="#FF9933" Font-Bold="True" ForeColor="#CC6600" Width="100px" />
