@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System;
 using CameraClasses;
+using Camera_Testing;
 
 namespace CameraClasses
 {
@@ -88,6 +89,8 @@ namespace CameraClasses
                 mThisStock = value;
             }
         }
+
+        public clsStaff ThisStaff { get; set; }
 
         public int Add()
         {

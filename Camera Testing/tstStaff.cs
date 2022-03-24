@@ -79,9 +79,9 @@ namespace Camera_Testing
             //create some test data to assign to the property
             DateTime TestData = DateTime.Today;
             //assign the data to the property
-            JavaStaff.DOB = TestData;
+            JavaStaff.StaffDOB = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(JavaStaff.DOB, TestData);
+            Assert.AreEqual(JavaStaff.StaffDOB, TestData);
         }
 
 

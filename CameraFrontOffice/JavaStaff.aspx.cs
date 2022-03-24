@@ -45,7 +45,7 @@ public partial class JavaStaff : System.Web.UI.Page
         //variable to store any error
         string Error = "";
         //validate the data
-        Error = JavaStaff.Valid(StaffID, StaffName, StaffPhoneNo, StaffHouseNo, StaffStreet, StaffDOB, StaffPostCode, DateAdded);
+        Error = JavaStaff.Valid(StaffID,  StaffName, StaffPhoneNo, StaffHouseNo, StaffStreet, StaffDOB, StaffPostCode, DateAdded);
 
         if (Error == "")
         {
@@ -54,7 +54,7 @@ public partial class JavaStaff : System.Web.UI.Page
             //capture the sataff name
             JavaStaff.StaffName = StaffName;
             //capture the staff dob
-            JavaStaff.DOB = Convert.ToDateTime(StaffDOB);
+            JavaStaff.StaffDOB = Convert.ToDateTime(StaffDOB);
             //capture the staff phone ni
             JavaStaff.StaffPhoneNo = StaffPhoneNo;
             //capture the house no
@@ -93,7 +93,7 @@ public partial class JavaStaff : System.Web.UI.Page
            
             //display the values of the p[roperties in the form
             txtStaffName.Text = JavaStaff.StaffName;
-            txtStaffDOB.Text = JavaStaff.DOB.ToString();
+            txtStaffDOB.Text = JavaStaff.StaffDOB.ToString();
             txtStaffPhoneNo.Text = JavaStaff.StaffPhoneNo.ToString();
             txtStaffPostCode.Text = JavaStaff.StaffPostCode;
             txtStaffHouseNo.Text = JavaStaff.StaffHouseNo;

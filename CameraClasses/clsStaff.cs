@@ -24,7 +24,7 @@ namespace Camera_Testing
         }
         private DateTime mStaffDOB;
         // dateadded private memeber variable
-        public DateTime DOB
+        public DateTime StaffDOB
         {
             get
             {
@@ -78,7 +78,7 @@ namespace Camera_Testing
         }
 
 
-       
+
 
         private string mStaffPostCode;
         // dateadded private memeber variable
@@ -188,7 +188,7 @@ namespace Camera_Testing
             return Error;
         }
         */
-        public string Valid(string staffID, string staffName, string staffPhoneNo, string staffHouseNo, string staffStreet, string staffDOB, string staffPostCode, string dateAdded)
+        public string Valid(string staffName, string staffPhoneNo, string staffHouseNo, string staffStreet, string staffStreet1, string staffDOB, string staffPostCode, string dateAdded)
         {
             //creating a string variable to store the error
             String Error = "";
