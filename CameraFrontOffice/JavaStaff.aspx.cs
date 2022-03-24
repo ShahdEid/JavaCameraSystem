@@ -9,6 +9,7 @@ using CameraClasses;
 
 public partial class JavaStaff : System.Web.UI.Page
 {
+   
     protected void Page_Load(object sender, EventArgs e)
     {
         //cretae an instance of clsStaff
@@ -49,11 +50,11 @@ public partial class JavaStaff : System.Web.UI.Page
         if (Error == "")
         {
             //capture the staffId
-            JavaStaff.StaffID = StaffID;
+           // JavaStaff.StaffID = StaffID;
             //capture the sataff name
             JavaStaff.StaffName = StaffName;
             //capture the staff dob
-            JavaStaff.DOB = StaffDOB;
+            JavaStaff.DOB = Convert.ToDateTime(StaffDOB);
             //capture the staff phone ni
             JavaStaff.StaffPhoneNo = StaffPhoneNo;
             //capture the house no
@@ -63,7 +64,7 @@ public partial class JavaStaff : System.Web.UI.Page
             //capture the street name
             JavaStaff.StaffStreet = StaffStreet;
             //capture the date added
-            JavaStaff.DateAdded = DateAdded;
+            JavaStaff.DateAdded = Convert.ToDateTime(DateAdded);
         }
 
         Session["JavaStaff"] = JavaStaff;

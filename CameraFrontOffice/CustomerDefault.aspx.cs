@@ -37,6 +37,44 @@ public partial class CustomerDefault : System.Web.UI.Page
     }
 
 
+    Int32 DisplayCustomer(string customerPostCode)
+    {
+        //variables
+        Int32 CustomerID;
+        string CustomerFName;
+        string CustomerLName;
+        DateTime CustomerDOB;
+        string CustomerPhoneNumber;
+        string CustomerPostCode;
+        string CustomerPaymentInfo;
+
+        //create an instance 
+        clsCustomerCollection Customer = new clsCustomerCollection();
+        Customer.ReportByPostCode(customerPostCode);
+        //var to store record count
+        Int32 RecordCount;
+        Int32 Index = 0;
+        RecordCount = Customer.Count; //records from tblCustomers
+        lstCustomers.Items.Clear();
+        while (Index < RecordCount) //while there are records to process
+        {
+            //get these attributes
+            CustomerID = Customer.CustomerList[Index].CustomerID;
+            CustomerFName = Customer.CustomerList[Index].CustomerFName;
+            CustomerLName = Customer.CustomerList[Index].CustomerLName;
+            CustomerDOB = Convert.ToDateTime(Customer.CustomerList[Index].CustomerDOB);
+            CustomerPhoneNumber = Customer.CustomerList[Index].CustomerPhoneNumber;
+            CustomerPostCode = Customer.CustomerList[Index].CustomerPostCode;
+            CustomerPaymentInfo = Customer.CustomerList[Index].CustomerPaymentInfo;
+            //create the new entry for the list box
+            ListItem NewEntry = new ListItem(CustomerFName + " " + CustomerLName + " " + CustomerDOB + " " + CustomerPhoneNumber + " " + CustomerPostCode + "" + CustomerPaymentInfo, CustomerID.ToString());
+            lstCustomers.Items.Add(NewEntry); //add new customer to the list
+            Index++; // index to the next record
+        }
+        return RecordCount;
+    }
+
+
 
 
     protected void btnAdd_Click(object sender, EventArgs e)
@@ -95,4 +133,23 @@ public partial class CustomerDefault : System.Web.UI.Page
     }
 
 
+
+
+
+    protected void Applybtn_Click(object sender, EventArgs e)
+    {
+        Int32 RecordCount;
+        RecordCount = DisplayCustomer(txtFName.Text);
+        lblError.Text = RecordCount + " Customer is shown";
+
+    }
+
+    protected void btnDisplay_Click(object sender, EventArgs e)
+    {
+        Int32 RecordCount;
+        RecordCount = DisplayCustomer("");
+        lblError.Text = RecordCount + "records in the database";
+        txtFName.Text = "";
+
+    }
 }
