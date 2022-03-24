@@ -152,4 +152,25 @@ public partial class CustomerDefault : System.Web.UI.Page
         txtFName.Text = "";
 
     }
+
+    protected void btnEdit_Click1(object sender, EventArgs e)
+    {
+        //var pk
+        Int32 CustomerID;
+        //if a record selected from the list
+        if (lstCustomers.SelectedIndex != -1)
+        {
+            //get therecord to edit
+            CustomerID = Convert.ToInt32(lstCustomers.SelectedValue);
+            //store the data int the session object
+            Session["CustomerID"] = CustomerID;
+            //redirect 
+            Response.Redirect("ACustomer.aspx");
+        }
+        else //if no record has been selected
+        {
+            // error 
+            lblError.Text = "Please select a record to edit from the list above";
+        }
+    }
 }

@@ -34,7 +34,7 @@
         <p class="auto-style1">
             &nbsp;&nbsp;&nbsp;
             <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" BackColor="White" BorderColor="#99FFCC" BorderStyle="Solid" Font-Bold="True" Width="81px" />
-            <asp:Button ID="btnEdit" runat="server" Text="Edit" Width="88px" BorderColor="#CCCCCC" BorderStyle="Solid" Font-Bold="True" />
+            <asp:Button ID="btnEdit" runat="server" Text="Edit" Width="88px" BorderColor="#CCCCCC" BorderStyle="Solid" Font-Bold="True" OnClick="btnEdit_Click1" />
             <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" BorderColor="#FF3300" BorderStyle="Solid" Font-Bold="True" Width="88px" />
             &nbsp;
             <asp:Label ID="lblError" runat="server" ForeColor="#FF9933" style="font-weight: 700; font-style: italic; text-decoration: underline"></asp:Label>
