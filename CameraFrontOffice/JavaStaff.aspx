@@ -11,7 +11,7 @@
         <div>
             Staff ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="txtStaffID" runat="server" Width="128px"></asp:TextBox>
-            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="margin-left: 110px" Text="Find" Width="328px" />
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="margin-left: 311px; margin-top: 0px;" Text="Find" Width="328px" Height="53px" />
             <br />
         </div>
         <asp:Label ID="Label1" runat="server" Text="Name"></asp:Label>
