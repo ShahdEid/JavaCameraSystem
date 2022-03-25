@@ -103,24 +103,89 @@ namespace Camera_Testing
             }
 
 
-            //[TestMethod]
+        //[TestMethod]
 
-            //public void TwoRecordsPresent()
-            
-
-            //{
-
-            //    //craete an instance 
-            //    clsOrderCollection AllOrders = new clsOrderCollection();
-            //    Assert.AreEqual(AllOrders.Count, 2);
-
-            //}
+        //public void TwoRecordsPresent()
 
 
+        //{
+
+        //    //craete an instance 
+        //    clsOrderCollection AllOrders = new clsOrderCollection();
+        //    Assert.AreEqual(AllOrders.Count, 2);
+
+        //}
 
 
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //create instance of the class we want to create
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            //create some test data to assign to the property
+            clsOrder TestItem = new clsOrder();
+            //var to store the pk
+            Int32 PrimaryKey = 0;
+            //set properties
+            TestItem.OrderID = 1;
+            TestItem.Quantity = "22";
+            TestItem.ProductID = 1;
+            TestItem.DateOfOrder = Convert.ToDateTime("10/03/2022");
+            TestItem.CustomerID = 1;
+            TestItem.PaymentStatus = true;
+            //set this orderr to the test data 
+            AllOrders.ThisOrder = TestItem;
+            //add record 
+            PrimaryKey = AllOrders.Add();
+            //set pk of the test data 
+            TestItem.OrderID = PrimaryKey;
+            //find the record 
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            //test to see that the 2 values are the same
+            Assert.AreEqual(AllOrders.ThisOrder, TestItem);
 
         }
+
+
+
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create instance of the class we want to create
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            //create some test data to assign to the property
+            clsOrder TestItem = new clsOrder();
+            //var to store the pk
+            Int32 PrimaryKey = 0;
+            //set properties
+            TestItem.OrderID = 1;
+            TestItem.Quantity = "22";
+            TestItem.ProductID = 1;
+            TestItem.DateOfOrder = Convert.ToDateTime("10/03/2022");
+            TestItem.CustomerID = 1;
+            TestItem.PaymentStatus = true;
+            //set this orderr to the test data 
+            AllOrders.ThisOrder = TestItem;
+            //add record 
+            PrimaryKey = AllOrders.Delete();
+            //set pk of the test data 
+            TestItem.OrderID = PrimaryKey;
+            //find the record 
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            //test to see that the 2 values are the same
+            Assert.AreEqual(AllOrders.ThisOrder, TestItem);
+
+        }
+
+
+
+
+
+
+
+
+    }
 
 
 

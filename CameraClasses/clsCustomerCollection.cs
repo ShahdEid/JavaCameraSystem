@@ -180,6 +180,9 @@ namespace CameraClasses
             DB.Execute("sproc_tblCustomer_Update");
         }
 
+
+      
+
         public void ReportByPostCode(string CustomerPostCode)
         {
             //filters records based on a full ot partial post code

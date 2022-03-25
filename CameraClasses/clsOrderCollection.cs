@@ -9,6 +9,24 @@ namespace CameraClasses
     {
         //private data member for the list 
         List<clsOrder> mOrderList = new List<clsOrder>();
+        clsOrder mThisOrder = new clsOrder();
+        public clsOrder ThisOrder
+        {
+            get
+            {
+                return mThisOrder;
+            }
+            set
+            {
+                mThisOrder = value;
+            }
+        }
+
+        public int Add()
+        {
+            mThisOrder.OrderID = 123;
+            return mThisOrder.OrderID;
+        }
 
         public List<clsOrder> OrderList
         {
@@ -57,7 +75,22 @@ namespace CameraClasses
                    
                 }
             }
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderID", mThisOrder.OrderID);
+            DB.Execute("sproc_tblOrder_Delete");
+
         }
+
+        public void Update()
+        {
+
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter(OrderID, mThisOrder, OrderID);
+
+        }
+    }
 
 
 

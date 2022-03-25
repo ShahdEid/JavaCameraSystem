@@ -13,38 +13,33 @@ public partial class AnOrder : System.Web.UI.Page
 
     protected void btnSave_Click(object sender, EventArgs e)
     {
-        //create a new instance of clsOrder
-        clsOrder AnOrder = new clsOrder();
-        //caputure Date of order
-        string DateOfOrder = txtDateOfOrder.Text;
-        // caputure the quantity 
-        string Quantity = txtQuantity.Text;
-        //caputure the product id 
-        string ProductID = txtProductID.Text;
-        //caputure the customer id
-        string CustomerID = txtCustomerID.Text;
-        // variable error
-        string Error = "";
-        // validate 
-        Error = AnOrder.Valid(DateOfOrder, Quantity, ProductID, CustomerID);
-        if (Error == "")
-        {
+        Add();
+        Response.Redirect("OrderDefault.aspx");
 
-            AnOrder.DateOfOrder = Convert.ToDateTime(DateOfOrder);
-            AnOrder.Quantity = Quantity;
-            AnOrder.ProductID = Convert.ToInt32(txtProductID.Text);
-            AnOrder.CustomerID = Convert.ToInt32(txtCustomerID.Text);
-            // store the address 
-            Session["AnOrder"] = AnOrder;
-            // redirect to the viewer page
-            Response.Write("OrderViewer.aspx");
+
+    }
+
+
+    void Add()
+    {
+        CameraClasses.clsOrderCollection OrderBook = new CameraClasses.clsOrderCollection();
+        string Error = OrderBook.ThisOrder.Valid(txtDateOfOrder.Text, txtCustomerID.Text, txtProductID.Text, txtQuantity.Text);
+        if (Error =="")
+        {
+            OrderBook.ThisOrder.DateOfOrder = Convert.ToDateTime(txtDateOfOrder.Text);
+            OrderBook.ThisOrder.Quantity = txtQuantity.Text;
+            OrderBook.ThisOrder.PaymentStatus = chkPaymentStatus.Checked;
+            OrderBook.ThisOrder.ProductID = Convert.ToInt32(ddlProductID.SelectValue);
+            OrderBook.ThisOrder.CustomerID = Convert.ToInt32(ddlCustomerID.SelectValue);
+            OrderBook.Add();
+
+
         }
         else
         {
-            // display the message 
-            lblError.Text = Error;
-        }
+            lblError.Text = "there were problems with the data enterd" + Error;
 
+        }
     }
 
 
