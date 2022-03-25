@@ -45,7 +45,7 @@
             Please enter a stock type:</p>
         <asp:TextBox ID="txtStockName" runat="server" Width="214px" style="z-index: 1; left: 10px; top: 304px; position: absolute"></asp:TextBox>
         <p>
-            <asp:Button ID="btnApply" runat="server" style="z-index: 1; left: 10px; top: 339px; position: absolute" Text="Apply" />
+            <asp:Button ID="btnApply" runat="server" style="z-index: 1; left: 10px; top: 339px; position: absolute" Text="Apply" OnClick="btnApply_Click" />
             <asp:Button ID="btnDisplayAll" runat="server" Text="Display All" CssClass="auto-style1" />
         </p>
         <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" CssClass="auto-style4" />
