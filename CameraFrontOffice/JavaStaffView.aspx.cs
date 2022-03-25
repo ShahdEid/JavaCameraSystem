@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CameraClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -86,5 +87,61 @@ public partial class JavaStaffView : System.Web.UI.Page
             //display an error
             lblError.Text = "Please select a record to delete from the list";
         }
+    }
+
+    Int32 DisplayStaffs(string customerFName)
+    {
+        //variables
+        Int32 StaffID;
+        string StaffName;
+        string StaffStreet;
+        DateTime StaffDOB;
+        string StaffPhoneNo;
+        string StaffPostCode;
+        string StaffHouseNo;
+        DateTime DateAdded;
+
+        
+
+        //create an instance 
+        clsStaffCollection Staffs = new clsStaffCollection();
+        Staffs.ReportByStaffName("StaffName");
+        //var to store record count
+        Int32 RecordCount;
+        Int32 Index = 0;
+        RecordCount = Staffs.Count; //records from tblCustomers
+        lstStaff.Items.Clear();
+        while (Index < RecordCount) //while there are records to process
+        {
+            //get these attributes
+            StaffID = Staffs.StaffList[Index].StaffID;
+            StaffName = Staffs.StaffList[Index].StaffName;
+            StaffStreet  = Staffs.StaffList[Index].StaffStreet;
+            StaffDOB = Convert.ToDateTime(Staffs.StaffList[Index].StaffDOB);
+            StaffPhoneNo = Staffs.StaffList[Index].StaffPhoneNo;
+            StaffPostCode = Staffs.StaffList[Index].StaffPostCode;
+            StaffHouseNo = Staffs.StaffList[Index].StaffHouseNo;
+            DateAdded = Convert.ToDateTime(Staffs.StaffList[Index].DateAdded);
+            //create the new entry for the list box
+            ListItem NewEntry = new ListItem(StaffName + " " + StaffStreet + " " + StaffDOB + " " + StaffPhoneNo + " " + StaffPostCode + "" + StaffHouseNo, StaffID.ToString());
+            lstStaff.Items.Add(NewEntry); //add new customer to the list
+            Index++; // index to the next record
+        }
+        return RecordCount;
+    }
+    protected void btnStaffApply_Click(object sender, EventArgs e)
+    {
+
+        Int32 RecordCount;
+        RecordCount = DisplayStaffs(txtStaffName.Text);
+        lblError.Text = RecordCount + " Staff is shown";
+    }
+
+    protected void btnStaffDisplayAll_Click(object sender, EventArgs e)
+    {
+        Int32 RecordCount;
+        RecordCount = DisplayStaffs("");
+        lblError.Text = RecordCount + "records in Java Cameras database";
+        txtStaffName.Text = "";
     }
 }
