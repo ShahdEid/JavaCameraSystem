@@ -154,6 +154,12 @@ namespace Camera_Testing
                 return false;
             }
         }
+
+        public string Valid(string text1, string text2, string text3, string text4, string text5, string text6, string text7)
+        {
+            throw new NotImplementedException();
+        }
+
         //adding function for the validation method
 
 

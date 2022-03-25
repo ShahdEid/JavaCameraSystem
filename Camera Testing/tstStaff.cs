@@ -383,7 +383,7 @@ namespace Camera_Testing
             //String variable to store any error message
             String Error = "";
             //creating some test data to pass to the method 
-            string StaffStreet= "";
+            string StaffStreet = "";
             //invoking the metho 
             Error = JavaStaff.Valid(StaffID, StaffName, StaffPhoneNo, StaffHouseNo, StaffStreet, StaffDOB, StaffPostCode, DateAdded);
             //test to see that the result is correct
@@ -516,7 +516,7 @@ namespace Camera_Testing
             //String variable to store any error message
             String Error = "";
             //creating some test data to pass to the method 
-            string StaffPhoneNo   = "12345123451";
+            string StaffPhoneNo = "12345123451";
             //invoking the metho 
             Error = JavaStaff.Valid(StaffID, StaffName, StaffPhoneNo, StaffHouseNo, StaffStreet, StaffDOB, StaffPostCode, DateAdded);
             //test to see that the result is correct
@@ -670,14 +670,14 @@ namespace Camera_Testing
             //chanfing the date to whatever the date is less 100 years
             TestDate = TestDate.AddYears(-100);
             //converting the date variable to a string variable
-            string DateAdded =TestDate.ToString();
+            string DateAdded = TestDate.ToString();
             //invoking the metho 
             Error = JavaStaff.Valid(StaffID, StaffName, StaffPhoneNo, StaffHouseNo, StaffStreet, StaffDOB, StaffPostCode, DateAdded);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
 
-       
+
 
         [TestMethod]
         public void DateAddedMinLessOne()
@@ -760,7 +760,7 @@ namespace Camera_Testing
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
-        public  void DateAddedInvalidData()
+        public void DateAddedInvalidData()
         {
 
             //instance of the class clsStaff
@@ -889,7 +889,7 @@ namespace Camera_Testing
             //string variable to  store any error message
             String Error = "";
             //set the date added to a non date value
-            string StaffDOB= "This is not a date!";
+            string StaffDOB = "This is not a date!";
             //invoke the method
             Error = JavaStaff.Valid(StaffID, StaffName, StaffPhoneNo, StaffHouseNo, StaffStreet, StaffDOB, StaffPostCode, DateAdded);
             //test to se that the result is correct

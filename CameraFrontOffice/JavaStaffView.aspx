@@ -18,7 +18,7 @@
             &nbsp;</p>
         <p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnStaffApply" runat="server" style="z-index: 1; left: 10px; top: 339px; position: absolute" Text="Apply" />
+            <asp:Button ID="btnStaffApply" runat="server" style="z-index: 1; left: 10px; top: 339px; position: absolute; right: 1211px;" Text="Apply" />
             <asp:Button ID="btnStaffDisplayAll" runat="server" style="width: 189px; z-index: 1; left: 179px; top: 339px; position: absolute" Text="Display All" />
         </p>
         <p>

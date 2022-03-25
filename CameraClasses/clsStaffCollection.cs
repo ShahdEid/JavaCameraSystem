@@ -3,6 +3,7 @@ using System;
 using CameraClasses;
 using Camera_Testing;
 
+
 namespace CameraClasses
 {
     public class clsStaffCollection
@@ -116,21 +117,24 @@ namespace CameraClasses
         }
 
 
-        /*
+
         public int Add()
         {
-            //adds a new record to the database based on the values of mThisStock
-            //connect to the database
+            //adds a new record to the db based on the values of mThisCustomer
+            //connect to db
             clsDataConnection DB = new clsDataConnection();
-            //set the parameters for the stored procedure
-            DB.AddParameter("@StockName", mThisStock.StockName);
-            DB.AddParameter("@StockQuantity", mThisStock.StockQuantity);
-            DB.AddParameter("@StockPrice", mThisStock.StockPrice);
-            DB.AddParameter("@StockType", mThisStock.StockType);
-            DB.AddParameter("@DateAdded", mThisStock.DateAdded);
-            //execute the query returning the primary key value
-            return DB.Execute("sproc_tblStock_Insert");
-        }*/
+            //set the parameters for the stored proc
+            DB.AddParameter("@StaffDOB", mThisStaff.StaffDOB);
+            DB.AddParameter("@StaffName", mThisStaff.StaffName);
+            DB.AddParameter("@StaffPhoneNo", mThisStaff.StaffPhoneNo);
+            DB.AddParameter("@StaffStreet", mThisStaff.StaffStreet);
+            DB.AddParameter("@StaffPostCode", mThisStaff.StaffPostCode);
+            DB.AddParameter("@StaffHouseNo", mThisStaff.StaffHouseNo);
+            DB.AddParameter("@DateAdded", mThisStaff.DateAdded);
+            //execute query returning the pk value
+            return DB.Execute("sproc_tblStaff_Insert");
+
+        }
 
         public void Delete()
         {
@@ -138,24 +142,41 @@ namespace CameraClasses
             //connect to the database
             clsDataConnection DB = new clsDataConnection();
             //set the parameters for the stored procedure
-            DB.AddParameter("@StaffId", mThisStaff.StaffID);
+            DB.AddParameter("@StaffID", mThisStaff.StaffID);
             //execute the stored procedure
             DB.Execute("sproc_tblStaff_Delete");
         }
-        /*
+
+        public void ReportByStaffName(string v)
+        {
+
+        }
+
+
+
+        public void ReportByType(string v)
+        {
+
+        }
+
         public void Update()
         {
             //update an existing record based on the values of ThisStock
             //connect to database
             clsDataConnection DB = new clsDataConnection();
             //set the parameters for the stored procedure
-            DB.AddParameter("@StockId", mThisStock.StockId);
-            DB.AddParameter("@StockName", mThisStock.StockName);
-            DB.AddParameter("@StockQuantity", mThisStock.StockQuantity);
-            DB.AddParameter("@StockPrice", mThisStock.StockPrice);
-            DB.AddParameter("@StockType", mThisStock.StockType);
-            DB.AddParameter("@DateAdded", mThisStock.DateAdded);
+            DB.AddParameter("@StaffID", mThisStaff.StaffID);
+            DB.AddParameter("@StaffName", mThisStaff.StaffName);
+            DB.AddParameter("@StaffPhoneNo", mThisStaff.StaffPhoneNo);
+            DB.AddParameter("@StaffDOB", mThisStaff.StaffDOB);
+            DB.AddParameter("@StaffHouseNo", mThisStaff.StaffHouseNo);
+            DB.AddParameter("@StaffStreet", mThisStaff.StaffStreet);
+            DB.AddParameter("@StaffPostCode", mThisStaff.StaffPostCode);
+            DB.AddParameter("@DateAdded", mThisStaff.DateAdded);
             //execute the stored procedure
-            DB.Execute("sproc_tblStock_Update");*/
+            DB.Execute("sproc_tblStaff_Update");
+        }
+
+
     }
 }

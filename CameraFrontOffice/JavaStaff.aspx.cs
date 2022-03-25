@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using Camera_Testing;
-using CameraClasses;
 
 public partial class JavaStaff : System.Web.UI.Page
 {
@@ -38,14 +32,15 @@ public partial class JavaStaff : System.Web.UI.Page
     }*/
     protected void btnOk_Click(object sender, EventArgs e)
     {
+
         //creating an instance of the clsStaff
         clsStaff JavaStaff = new clsStaff();
         //capture the staffId
-        string  StaffID = txtStaffID.Text;
+        string StaffID = txtStaffID.Text;
         //capture the sataff name
         string StaffName = txtStaffName.Text;
         //capture the staff dob
-        string  StaffDOB = txtStaffDOB.Text;
+        string StaffDOB = txtStaffDOB.Text;
         //capture the staff phone ni
         string StaffPhoneNo = txtStaffPhoneNo.Text;
         //capture the house no
@@ -53,9 +48,9 @@ public partial class JavaStaff : System.Web.UI.Page
         //capture the postcode
         string StaffPostCode = txtStaffPostCode.Text;
         //capture the street name
-        string StaffStreet = txtStaffStreet.Text ;
+        string StaffStreet = txtStaffStreet.Text;
         //capture the date added
-        string  DateAdded = txtDateAdded.Text ;
+        string DateAdded = txtDateAdded.Text;
 
         //variable to store any error
         string Error = "";
@@ -65,7 +60,7 @@ public partial class JavaStaff : System.Web.UI.Page
         if (Error == "")
         {
             //capture the staffId
-           // JavaStaff.StaffID = StaffID;
+            // JavaStaff.StaffID = StaffID;
             //capture the sataff name
             JavaStaff.StaffName = StaffName;
             //capture the staff dob
@@ -85,7 +80,7 @@ public partial class JavaStaff : System.Web.UI.Page
         Session["JavaStaff"] = JavaStaff;
         //redirect to the viewer page
         Response.Redirect("JavaStaff.aspx");
-        
+
     }
 
 
@@ -105,7 +100,7 @@ public partial class JavaStaff : System.Web.UI.Page
         //If found
         if (Found == true)
         {
-           
+
             //display the values of the p[roperties in the form
             txtStaffName.Text = JavaStaff.StaffName;
             txtStaffDOB.Text = JavaStaff.StaffDOB.ToString();
@@ -116,6 +111,38 @@ public partial class JavaStaff : System.Web.UI.Page
 
 
         }
-
     }
+    //function for adding new records
+    void Add()
+    {
+        //create an instance of the customer 
+        CameraClasses.clsStaffCollection Staffs = new CameraClasses.clsStaffCollection();
+        //validate the data on the web form
+        String Error = Staffs.ThisStaff.Valid(txtStaffDOB.Text, txtStaffName.Text, txtStaffStreet.Text, txtStaffPhoneNo.Text, txtStaffPostCode.Text, txtStaffHouseNo.Text, txtDateAdded.Text);
+        //if data isOK then add it to the object
+        if (Error == "")
+        {
+            //get data entered by the user
+            Staffs.ThisStaff.StaffDOB = Convert.ToDateTime(txtStaffDOB.Text);
+            Staffs.ThisStaff.StaffName = txtStaffName.Text;
+            Staffs.ThisStaff.StaffStreet = txtStaffStreet.Text;
+            Staffs.ThisStaff.StaffPhoneNo = txtStaffPhoneNo.Text;
+            Staffs.ThisStaff.StaffPostCode = txtStaffPostCode.Text;
+            Staffs.ThisStaff.StaffHouseNo = txtStaffPostCode.Text;
+            Staffs.ThisStaff.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
+
+            //add the record
+            Staffs.Add();
+            //all done redirect 
+            Response.Redirect("CustomerDefault.aspx");
+
+        }
+
+        else
+        {
+            //error
+            lblError.Text = "Something went wrong with the data entered" + Error;
+        }
+    }
+
 }
