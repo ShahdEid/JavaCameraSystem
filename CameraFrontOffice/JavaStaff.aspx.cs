@@ -1,8 +1,10 @@
 ﻿using System;
 using Camera_Testing;
+using CameraClasses;
 
 public partial class JavaStaff : System.Web.UI.Page
 {
+    Int32 StaffID;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -14,22 +16,7 @@ public partial class JavaStaff : System.Web.UI.Page
         Response.Write(JavaStaff.StaffID);
 
     }
-    /*
-    void DisplayStaffs()
-    {
-        //creating an instance of the staff collection
-        CameraClasses.clsStaffCollection JavaStaff = new CameraClasses.clsStaffCollection();
-        //set the data source to the list of staff in the collection
-
-        lstStaff.DataSource = JavaStaff.StaffList;
-        //set the name of the primary key
-        lstStaff.DataValueField = "StaffID";
-        //set the data field to display
-        lstStaff.DataTextField = "PostCode";
-        //BIND THE DATA to the list 
-        lstStaff.DataBind();
-        
-    }*/
+   
     protected void btnOk_Click(object sender, EventArgs e)
     {
 
@@ -145,4 +132,20 @@ public partial class JavaStaff : System.Web.UI.Page
         }
     }
 
+    void DisplayStaffs()
+    {
+        //create an instance of the clsStockCollection
+        clsStaffCollection JavaStaff = new clsStaffCollection();
+        //find the record to update
+        JavaStaff.ThisStaff.Find(StaffID);
+        //display the data for this record
+        txtStaffName.Text = JavaStaff.ThisStaff.StaffName;
+        txtStaffDOB.Text = JavaStaff.ThisStaff.StaffDOB.ToString();
+        txtStaffPhoneNo.Text = JavaStaff.ThisStaff.StaffPhoneNo;
+        txtStaffStreet.Text = JavaStaff.ThisStaff.StaffStreet;
+        txtStaffHouseNo.Text = JavaStaff.ThisStaff.StaffHouseNo;
+        txtStaffPostCode.Text = JavaStaff.ThisStaff.StaffPostCode;
+        txtDateAdded.Text = JavaStaff.ThisStaff.DateAdded.ToString();
+
+    }
 }
