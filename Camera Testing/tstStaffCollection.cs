@@ -231,13 +231,27 @@ namespace Camera_Testing
 
         [TestMethod]
         public void ReportByStaffNameMethodOK()
-        {
+        {   //create an instance of the claass comtaining unfikteredreult
+            clsStaffCollection AllStaff = new clsStaffCollection();
             //create an instance of the filtered data
             clsStaffCollection FilteredStaff = new clsStaffCollection();
             //apply a stock type that doesn't exist
-            FilteredStaff.ReportByStaffName("xxx");
+            FilteredStaff.ReportByStaffName("aaa");
             //test to see that there are no records
-            Assert.AreEqual(0, FilteredStaff.Count);
+            Assert.AreEqual(AllStaff.Count, FilteredStaff.Count);
+        }
+       
+        //Record that doesnt exist
+        [TestMethod]
+        public void ReportByStaffNameNoneFound()
+        {
+            //create an instance of the filtered data 
+            clsStaffCollection FilterStaffs = new clsStaffCollection();
+            //apply a post code that doesnt exist
+            FilterStaffs.ReportByStaffName("www www");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilterStaffs.Count);
+
         }
 
         [TestMethod]

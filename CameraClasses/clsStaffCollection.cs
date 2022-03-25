@@ -147,17 +147,21 @@ namespace CameraClasses
             DB.Execute("sproc_tblStaff_Delete");
         }
 
-        public void ReportByStaffName(string v)
+        public void ReportByStaffName(string StaffName)
         {
-
+            //filters the record based on a full or partial post code
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //SEND THE sTAFFName parameter to the database
+            DB.AddParameter("@StaffName", StaffName);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStaff_FilterStaffName");
+            //populatr the array ist with the data table
+            PopulateArray(DB);
         }
 
 
 
-        public void ReportByType(string v)
-        {
-
-        }
 
         public void Update()
         {
@@ -176,7 +180,35 @@ namespace CameraClasses
             //execute the stored procedure
             DB.Execute("sproc_tblStaff_Update");
         }
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populates the array list based on the data table in the param DB
+            //var for the index
+            Int32 Index = 0;
+            //var to store the record count
+            Int32 RecordCount;
+            //get the count of records
+            RecordCount = DB.Count;
+            //clear the private array list
+            mStaffList = new List<clsStaff>();
+            //while there r records to process
+            while (Index < RecordCount)
+            {
+                //create a blank address
+                clsStaff JavaStaff= new clsStaff();
+                JavaStaff.StaffID = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffId"]);
+                JavaStaff.StaffName = Convert.ToString(DB.DataTable.Rows[Index]["StaffName"]);
+                JavaStaff.StaffDOB = Convert.ToDateTime(DB.DataTable.Rows[Index]["StaffDOB"]);
+                JavaStaff.StaffPhoneNo = Convert.ToString(DB.DataTable.Rows[Index]["StaffPhoneno"]);
+                JavaStaff.StaffStreet = Convert.ToString(DB.DataTable.Rows[Index]["StaffStreet"]);
+                JavaStaff.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateAdded"]);
+                //add record to the private data member 
+                mStaffList.Add(JavaStaff );
+                //point at the next record 
+                Index++;
+            }
 
+        }
 
     }
 }
