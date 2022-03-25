@@ -19,7 +19,7 @@ public partial class JavaStaff : System.Web.UI.Page
    
     protected void btnOk_Click(object sender, EventArgs e)
     {
-
+        /*
         //creating an instance of the clsStaff
         clsStaff JavaStaff = new clsStaff();
         //capture the staffId
@@ -66,7 +66,18 @@ public partial class JavaStaff : System.Web.UI.Page
 
         Session["JavaStaff"] = JavaStaff;
         //redirect to the viewer page
-        Response.Redirect("JavaStaff.aspx");
+        Response.Redirect("JavaStaff.aspx");*/
+
+        if (StaffID == -1)
+        {
+            //add new record
+            Add();
+        }
+        else
+        {
+            //update 
+            Update();
+        }
 
     }
 
@@ -129,6 +140,36 @@ public partial class JavaStaff : System.Web.UI.Page
         {
             //error
             lblError.Text = "Something went wrong with the data entered" + Error;
+        }
+    }
+    void Update()
+    {
+        //create n instance
+        CameraClasses.clsStaffCollection Staffs= new CameraClasses.clsStaffCollection();
+        //validate data on the web form
+        String Error = Staffs.ThisStaff.Valid(txtStaffDOB.Text, txtStaffName.Text, txtStaffPhoneNo.Text, txtStaffStreet.Text, txtStaffPostCode.Text, txtDateAdded.Text);
+        //if the data is OK add it to the object
+        if (Error == "")
+        {
+            //find record to update
+            Staffs.ThisStaff.Find(StaffID);
+            //get data entered by the user
+            Staffs.ThisStaff.StaffDOB = Convert.ToDateTime(txtStaffDOB.Text);
+            Staffs.ThisStaff.StaffName = txtStaffName.Text;
+            Staffs.ThisStaff.StaffStreet = txtStaffStreet.Text;
+            Staffs.ThisStaff.StaffPhoneNo = txtStaffPhoneNo.Text;
+            Staffs.ThisStaff.StaffPostCode = txtStaffPostCode.Text;
+            Staffs.ThisStaff.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
+            //update
+            Staffs.Update();
+            //back to the main page
+            Response.Redirect("CustomerDefault.aspx");
+
+        }
+        else
+        {
+            //error
+            lblError.Text = "Something went wrong!" + Error;
         }
     }
 

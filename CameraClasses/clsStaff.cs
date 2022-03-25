@@ -157,9 +157,50 @@ namespace Camera_Testing
 
         public string Valid(string text1, string text2, string text3, string text4, string text5, string text6, string text7)
         {
-            throw new NotImplementedException();
-        }
 
+            //creating a string variable to store the error
+            String Error = "";
+            //if the Staff Name is blank
+            if (StaffName.Length == 0)
+            {
+                //record the error
+                Error = Error + " The Staff Name may not be blank : ";
+            }
+            if (StaffName.Length > 20)
+            {
+                //record the error
+                Error = Error + "The StaffName must be less than 20 characters : ";
+            }
+            //return any relevent error messages
+            try
+            {
+
+
+                //copying the date added value to the DateTemp variable
+                DateAdded = Convert.ToDateTime(DateAdded);
+                if (DateAdded < DateTime.Now.Date)
+                {
+                    //record the error 
+                    Error = Error + "The date cannot be in past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateAdded > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date";
+            }
+            //return any error messages
+            return Error;
+        }
+    }
+
+      
         //adding function for the validation method
 
 
@@ -193,7 +234,7 @@ namespace Camera_Testing
             //return any error messages
             return Error;
         }
-        */
+        *//*
         public string Valid(string staffName, string staffPhoneNo, string staffHouseNo, string staffStreet, string staffStreet1, string staffDOB, string staffPostCode, string dateAdded)
         {
             //creating a string variable to store the error
@@ -236,6 +277,5 @@ namespace Camera_Testing
             //return any error messages
             return Error;
         }
-
+    */
     }
-}
