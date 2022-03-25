@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using CameraClasses;
-using Camera_Testing;
+
 
 public partial class JavaStaffDelete : System.Web.UI.Page
 {
